@@ -19,9 +19,7 @@ public class SFTintedIcon: UIImageView {
         image = UIImage(systemName: item.iconName, withConfiguration: iconConfig)
         layer.cornerRadius = style.cornerRadius
         
-        if !item.useGradientColor {
-            backgroundColor = item.backgroundColor
-        }
+        
     }
     
     required init?(coder: NSCoder) {

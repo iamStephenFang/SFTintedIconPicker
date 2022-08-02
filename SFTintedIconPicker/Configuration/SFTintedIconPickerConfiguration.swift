@@ -15,9 +15,9 @@ public struct SFTintedIconPickerConfiguration {
     
     public init() {}
     
-
+    // TODO: Remove
     /// The title for picker
-    public var title: String = NSLocalizedString("Picker", comment: "")
+    public var title: String = "Picker"
     
     /// Use this property to modify the default colors provided.
     public var colors = SFTintedIconPickerColors()

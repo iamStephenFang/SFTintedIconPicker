@@ -24,11 +24,12 @@ open class SFTintedIconPicker: UINavigationController {
     
     /// Get a SFTintedIconPicker instance with the default configuration.
     public convenience init() {
-        self.init(configuration: SFTintedIconPickerConfiguration())
+        self.init(configuration: SFTintedIconPickerConfiguration.shared)
     }
 
     /// Get a SFTintedIconPicker with the specified configuration.
     public required init(configuration: SFTintedIconPickerConfiguration) {
+        SFTintedIconPickerConfiguration.shared = configuration
         picker = SFTintedIconPickerVC()
         super.init(nibName: nil, bundle: nil)
 //        picker.pickerVCDelegate = self
@@ -51,7 +52,21 @@ open class SFTintedIconPicker: UINavigationController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = SFTintedConfig.title
+        viewControllers = [picker]
+        
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            UINavigationBar.appearance().compactAppearance = appearance
+        } else {
+            navigationBar.isTranslucent = false
+        }
+        
+        navigationBar.tintColor = SFTintedConfig.colors.pickerTintColor
+        
+        view.backgroundColor = SFTintedConfig.colors.pickerBackgroundColor
     }
     
     deinit {

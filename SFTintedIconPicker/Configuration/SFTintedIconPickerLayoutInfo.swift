@@ -12,7 +12,7 @@ public struct SFTintedIconPickerLayoutInfo {
     // MARK: - Icon
     
     /// The size which is used for icon
-    public var iconAreaVerticalMargin = CGFloat(16)
+    public var iconAreaTopMargin = CGFloat(16)
     
     /// The size which is used for icon
     public var iconAreaHorizontalMargin = CGFloat(16)
@@ -23,7 +23,7 @@ public struct SFTintedIconPickerLayoutInfo {
     // MARK: - Color Picker
     
     /// The size which is used for icon
-    public var colorPickerAreaVerticalMargin = CGFloat(16)
+    public var colorPickerAreaTopMargin = CGFloat(16)
     
     /// The size which is used for icon
     public var colorPickerAreaHorizontalMargin = CGFloat(16)
@@ -37,7 +37,10 @@ public struct SFTintedIconPickerLayoutInfo {
     // MARK: - Icon Picker
     
     /// The size which is used for icon
-    public var iconPickerAreaVerticalMargin = CGFloat(16)
+    public var iconPickerAreaTopMargin = CGFloat(16)
+    
+    /// The size which is used for icon
+    public var iconPickerAreaBottomMargin = CGFloat(16)
     
     /// The size which is used for icon
     public var iconPickerAreaHorizontalMargin = CGFloat(16)

@@ -12,7 +12,7 @@ public struct SFTintedIconPickerColors {
     // MARK: - Picker Style
     
     /// The common tint color which is used for done buttons in navigation bar
-    public var pickerTintColor = UIColor.systemBackground
+    public var pickerTintColor = UIColor.yellow
     
     /// The background color to use for picker.
     public var pickerBackgroundColor = UIColor.systemBackground
@@ -40,13 +40,16 @@ public struct SFTintedIconPickerColors {
     // MARK: - Color Picker
     
     /// Use this property to modify the default colors provided.
-    public var providedColors : [UIColor] = []
+    public var providedColors : [SFTintedColor] = [SFTintedColor(useGradientColor: false, backgroundColor: .red),
+                                                   SFTintedColor(useGradientColor: false, backgroundColor: .orange),
+                                                   SFTintedColor(useGradientColor: false, backgroundColor: .yellow),
+                                                   SFTintedColor(useGradientColor: false, backgroundColor: .green),
+                                                   SFTintedColor(useGradientColor: false, backgroundColor: .cyan),
+                                                   SFTintedColor(useGradientColor: false, backgroundColor: .blue),
+                                                   SFTintedColor(useGradientColor: false, backgroundColor: .purple)]
     
     /// Use this property to modify the default colors provided.
-    public var providedGradientColors : [UIColor] = []
-    
-    /// Use this property to modify the default colors provided.
-    public var colorPickerAreaBackgroundColor = UIColor.clear
+    public var colorPickerAreaBackgroundColor = UIColor.secondarySystemBackground
     
     /// Use this property to modify the default colors provided.
     public var colorPickerSelectedCircleColor = UIColor.clear
@@ -60,7 +63,7 @@ public struct SFTintedIconPickerColors {
     public var iconPickerSelectedBackgroundColor = UIColor.secondarySystemBackground
     
     /// Use this property to modify the default colors provided.
-    public var iconPickerAreaBackgroundColor = UIColor.clear
+    public var iconPickerAreaBackgroundColor = UIColor.secondarySystemBackground
     
     /// Use this property to modify the default colors provided.
     public var iconPickerSectionHeaderBackgroundColor = UIColor.clear

@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 
     fileprivate lazy var actionButton : UIButton = {
         $0.setTitle("Customize", for: .normal)
-        $0.addTarget(self, action: #selector(didClickActionButton), for: .touchUpOutside)
+        $0.addTarget(self, action: #selector(showIconPicker), for: .touchUpInside)
         return $0
     } (UIButton(configuration: .filled(), primaryAction: nil))
     
@@ -31,9 +31,10 @@ class ViewController: UIViewController {
     
     // MARK: Actions
     
-    @objc private func didClickActionButton() {
-        let vc = SFTintedIconPicker()
-        self.present(vc, animated: true)
+    @objc private func showIconPicker() {
+        let config = SFTintedIconPickerConfiguration()
+        let picker = SFTintedIconPicker(configuration:config)
+        present(picker, animated: true, completion: nil)
     }
 }
 
