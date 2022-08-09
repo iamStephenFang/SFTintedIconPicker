@@ -18,8 +18,6 @@ public class SFTintedIcon: UIImageView {
         }
         image = UIImage(systemName: item.iconName, withConfiguration: iconConfig)
         layer.cornerRadius = style.cornerRadius
-        
-        
     }
     
     required init?(coder: NSCoder) {

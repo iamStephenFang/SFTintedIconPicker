@@ -18,9 +18,11 @@ class ViewController: UIViewController {
 
     fileprivate lazy var actionButton : UIButton = {
         $0.setTitle("Customize", for: .normal)
+        $0.backgroundColor = .blue
+        $0.layer.cornerRadius = 10.0
         $0.addTarget(self, action: #selector(showIconPicker), for: .touchUpInside)
         return $0
-    } (UIButton(configuration: .filled(), primaryAction: nil))
+    } (UIButton(type: .system))
     
     override func viewDidLoad() {
         super.viewDidLoad()

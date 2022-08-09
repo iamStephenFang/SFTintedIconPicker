@@ -15,7 +15,7 @@ public struct SFTintedIconPickerColors {
     public var pickerTintColor = UIColor.yellow
     
     /// The background color to use for picker.
-    public var pickerBackgroundColor = UIColor.systemBackground
+    public var pickerBackgroundColor = UIColor.systemGroupedBackground
     
     /// The text color to use for picker' s title.
     public var pickerTitleColor = UIColor.label
@@ -29,13 +29,13 @@ public struct SFTintedIconPickerColors {
     // MARK: - Icon
     
     /// The foreground  color to use for icon.
-    public var iconTintedColor: UIColor = UIColor.secondarySystemBackground
+    public var iconTintedColor: UIColor = UIColor.gray
     
     /// The background color to use for icon.
     public var iconBackgroundColor: UIColor = UIColor.secondarySystemBackground
     
     /// The background color to use for selected icon..
-    public var iconAreaBackgroundColor = UIColor.secondarySystemBackground
+    public var iconAreaBackgroundColor = UIColor.systemBackground
     
     // MARK: - Color Picker
     
@@ -49,7 +49,7 @@ public struct SFTintedIconPickerColors {
                                                    SFTintedColor(useGradientColor: false, backgroundColor: .purple)]
     
     /// Use this property to modify the default colors provided.
-    public var colorPickerAreaBackgroundColor = UIColor.secondarySystemBackground
+    public var colorPickerAreaBackgroundColor = UIColor.systemBackground
     
     /// Use this property to modify the default colors provided.
     public var colorPickerSelectedCircleColor = UIColor.clear
@@ -63,7 +63,7 @@ public struct SFTintedIconPickerColors {
     public var iconPickerSelectedBackgroundColor = UIColor.secondarySystemBackground
     
     /// Use this property to modify the default colors provided.
-    public var iconPickerAreaBackgroundColor = UIColor.secondarySystemBackground
+    public var iconPickerAreaBackgroundColor = UIColor.systemBackground
     
     /// Use this property to modify the default colors provided.
     public var iconPickerSectionHeaderBackgroundColor = UIColor.clear

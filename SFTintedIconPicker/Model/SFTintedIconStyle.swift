@@ -13,7 +13,7 @@ public struct SFTintedIconStyle {
     public var iconSize = SFTintedIconSize.small
     
     /// Use this property to modify the default colors provided.
-    public var iconColor = UIColor.tintColor
+    public var iconColor = UIColor.yellow
     
     /// Use this property to modify the default colors provided.
     public var symbolSize = SFTintedSymbolSize.small
