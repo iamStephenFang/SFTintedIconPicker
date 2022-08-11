@@ -12,7 +12,7 @@ public struct SFTintedIconPickerColors {
     // MARK: - Picker Style
     
     /// The common tint color which is used for done buttons in navigation bar
-    public var pickerTintColor = UIColor.yellow
+    public var pickerTintColor = UIColor.systemBlue
     
     /// The background color to use for picker.
     public var pickerBackgroundColor = UIColor.systemGroupedBackground

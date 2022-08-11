@@ -16,8 +16,8 @@ class SFIconPicker : UIView {
     fileprivate lazy var collectionView : UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = CGFloat(22)
-        layout.minimumInteritemSpacing = CGFloat(15)
+        layout.minimumLineSpacing = SFTintedConfig.layoutInfos.iconPickerMinimumLineSpacing
+        layout.minimumInteritemSpacing = SFTintedConfig.layoutInfos.iconPickerMinimumInteritemSpacing
         
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.delegate = self
@@ -64,7 +64,18 @@ class SFIconPicker : UIView {
      
         searchBar.frame = CGRect(x: SFTintedConfig.layoutInfos.searchBarHorizontalPadding, y: SFTintedConfig.layoutInfos.searchBarTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.searchBarHorizontalPadding, height: SFTintedConfig.layoutInfos.searchBarHeight)
         
-        collectionView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, y: searchBar.frame.maxY + SFTintedConfig.layoutInfos.iconPickerTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, height: frame.size.height - SFTintedConfig.layoutInfos.searchBarHeight -  SFTintedConfig.layoutInfos.searchBarTopPadding -  SFTintedConfig.layoutInfos.iconPickerBottomPadding - SFTintedConfig.layoutInfos.iconPickerTopPadding)
+        collectionView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, y: searchBar.frame.maxY + SFTintedConfig.layoutInfos.iconPickerTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, height: collectionViewHeight())
+    }
+    
+    private func collectionViewHeight() -> CGFloat {
+        let columnCount = CGFloat(6)
+        let symbolCount = CGFloat(SFIconPicker.symbols.count)
+        let rowCount = CGFloat(ceil(symbolCount / columnCount))
+        return rowCount * SFTintedConfig.sizes.pickIconSize + (rowCount - 1) * SFTintedConfig.layoutInfos.iconPickerMinimumLineSpacing
+    }
+    
+    public func height() -> CGFloat {
+        return collectionViewHeight() + SFTintedConfig.layoutInfos.iconPickerBottomPadding + SFTintedConfig.layoutInfos.iconPickerTopPadding + SFTintedConfig.layoutInfos.searchBarTopPadding + SFTintedConfig.layoutInfos.searchBarHeight
     }
 }
 

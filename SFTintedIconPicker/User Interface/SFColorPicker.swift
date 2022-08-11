@@ -46,6 +46,10 @@ class SFColorPicker: UIView {
         
         collectionView.frame = CGRect(x: SFTintedConfig.layoutInfos.colorPickerHorizontalPadding, y: SFTintedConfig.layoutInfos.colorPickerVerticalPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, height: frame.size.height - 2 * SFTintedConfig.layoutInfos.colorPickerVerticalPadding)
     }
+    
+    public func height() -> CGFloat {
+        return 176
+    }
 }
 
 extension SFColorPicker: UICollectionViewDataSource {

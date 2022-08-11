@@ -65,4 +65,9 @@ public struct SFTintedIconPickerLayoutInfo {
     /// The size which is used for icon
     public var iconPickerHorizontalPadding = CGFloat(14)
     
+    /// The size which is used for icon
+    public var iconPickerMinimumLineSpacing = CGFloat(22)
+    
+    /// The size which is used for icon
+    public var iconPickerMinimumInteritemSpacing = CGFloat(15)
 }

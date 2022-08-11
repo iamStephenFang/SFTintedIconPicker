@@ -10,6 +10,6 @@ import Foundation
 public struct SFTintedIconPickerTitle {
     
     public var navigationTitle = localizedStringInSFTintedIconPicker("SFTintedIconPickerNavigationTitle")
-    public var navigationFinishTitle = localizedStringInSFTintedIconPicker("SFTintedIconPickerNavigationFinishTitle")
+    public var navigationFinishTitle = localizedStringInSFTintedIconPicker("SFTintedIconPickerDone")
     public var searchBarPlaceHolder = localizedStringInSFTintedIconPicker("SFTintedIconPickerSearchBarPlaceHolder")
 }

@@ -12,6 +12,8 @@ open class SFTintedIconPickerVC: UIViewController {
     private let item = SFTintedItem()
     private let style = SFTintedIconStyle()
     
+    private let scrollView = UIScrollView()
+    
     private var iconView = SFTintedIcon()
     private let iconBackgroundView = UIView()
     
@@ -26,6 +28,7 @@ open class SFTintedIconPickerVC: UIViewController {
         super.viewDidLoad()
         
         setUpNavigation()
+        setUpScrollView()
         setUpIconArea()
         setUpColorPickerArea()
         setUpSymbolPickerArea()
@@ -36,11 +39,17 @@ open class SFTintedIconPickerVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: SFTintedConfig.titles.navigationFinishTitle, style: .done, target: self, action: #selector(done))
     }
     
+    private func setUpScrollView() {
+        view.addSubview(scrollView)
+        scrollView.frame = view.bounds
+        scrollView.contentSize = CGSize(width: view.bounds.size.width, height: contentHeight())
+    }
+    
     private func setUpIconArea() {
         iconBackgroundView.backgroundColor = SFTintedConfig.colors.iconAreaBackgroundColor
-        iconBackgroundView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, y: self.navigationController!.navigationBar.frame.height + SFTintedConfig.layoutInfos.iconAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, height: SFTintedConfig.layoutInfos.iconVerticalPadding * 2 + SFTintedConfig.sizes.demoIconSize.rect.height)
+        iconBackgroundView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, y:  SFTintedConfig.layoutInfos.iconAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, height: SFTintedConfig.layoutInfos.iconVerticalPadding * 2 + SFTintedConfig.sizes.demoIconSize.rect.height)
         iconBackgroundView.layer.cornerRadius = 10.0
-        view.addSubview(iconBackgroundView)
+        scrollView.addSubview(iconBackgroundView)
         
         iconView.frame = CGRect(origin: CGPoint(x: (iconBackgroundView.bounds.width - SFTintedConfig.sizes.demoIconSize.rect.width) / 2.0, y: (iconBackgroundView.bounds.height - SFTintedConfig.sizes.demoIconSize.rect.height) / 2.0), size: SFTintedConfig.sizes.demoIconSize.rect)
         iconBackgroundView.addSubview(iconView)
@@ -48,21 +57,36 @@ open class SFTintedIconPickerVC: UIViewController {
     
     private func setUpColorPickerArea() {
         colorPicker.colorPickerDelegate = self
-        colorPicker.frame = CGRect(x: SFTintedConfig.layoutInfos.colorPickerAreaHorizontalMargin, y: iconBackgroundView.frame.maxY + SFTintedConfig.layoutInfos.colorPickerAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.colorPickerAreaHorizontalMargin, height: 176)
+        colorPicker.frame = CGRect(x: SFTintedConfig.layoutInfos.colorPickerAreaHorizontalMargin, y: iconBackgroundView.frame.maxY + SFTintedConfig.layoutInfos.colorPickerAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.colorPickerAreaHorizontalMargin, height: colorPicker.height())
         colorPicker.layer.cornerRadius = 10.0
-        view.addSubview(colorPicker)
+        scrollView.addSubview(colorPicker)
     }
     
     private func setUpSymbolPickerArea() {
         iconPicker.iconPickerDelegate = self
         iconPicker.backgroundColor = SFTintedConfig.colors.iconPickerAreaBackgroundColor
-        iconPicker.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, y: colorPicker.frame.maxY + SFTintedConfig.layoutInfos.iconPickerAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, height: 500)
+        iconPicker.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, y: colorPicker.frame.maxY + SFTintedConfig.layoutInfos.iconPickerAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, height: iconPicker.height())
         iconPicker.layer.cornerRadius = 10.0
-        view.addSubview(iconPicker)
+        scrollView.addSubview(iconPicker)
     }
     
     @objc func done() {
         self.didSelectItem!(item)
+    }
+    
+    private func contentHeight() -> CGFloat {
+        let iconAreaHeight = SFTintedConfig.layoutInfos.iconVerticalPadding * 2 + SFTintedConfig.sizes.demoIconSize.rect.height + SFTintedConfig.layoutInfos.iconAreaTopMargin
+        let colorPickerAreaHeight = SFTintedConfig.layoutInfos.colorPickerAreaTopMargin + colorPicker.height()
+        let iconPickerAreaHeight = SFTintedConfig.layoutInfos.iconPickerAreaTopMargin + iconPicker.height() + SFTintedConfig.layoutInfos.iconPickerAreaBottomMargin
+        
+        let keyWindow = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .compactMap({$0 as? UIWindowScene})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+        let bottomInsets = keyWindow?.safeAreaInsets.bottom
+        
+        return iconAreaHeight + colorPickerAreaHeight + iconPickerAreaHeight + (bottomInsets ?? 0)
     }
 }
 
@@ -94,8 +118,7 @@ extension SFTintedIconPickerVC: SFColorPickerDelegate {
 extension SFTintedIconPickerVC: UIColorPickerViewControllerDelegate {
     @available(iOS 14.0, *)
     public func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        let color = SFTintedColor(useGradientColor: false, backgroundColor: viewController.selectedColor)
-        item.iconColor = color
+        item.iconColor = SFTintedColor(useGradientColor: false, backgroundColor: viewController.selectedColor)
         iconView.refreshWithItem(item)
     }
 }

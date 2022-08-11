@@ -24,7 +24,7 @@ public struct SFTintedIconStyle {
     public var useSymbolConfiguration: Bool = false
     
     /// The size which is used for symbol
-    public var symbolConfiguration = UIImage.SymbolConfiguration(font: .systemFont(ofSize: SFTintedSymbolSize.small.fontSize))
+    public var symbolConfiguration = UIImage.SymbolConfiguration(pointSize:SFTintedSymbolSize.medium.pointSize)
 
 }
 
@@ -42,7 +42,7 @@ public enum SFTintedSymbolSize {
     /// Custom size
     case custom(_ size: CGFloat)
     
-    var fontSize: CGFloat {
+    var pointSize: CGFloat {
         switch self {
         case .small: return CGFloat(24)
         case .medium: return CGFloat(33)

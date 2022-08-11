@@ -15,7 +15,7 @@ public class SFTintedIcon: UIImageView {
         return layer
     }()
     
-    public var iconConfig = UIImage.SymbolConfiguration(font: .systemFont(ofSize: SFTintedSymbolSize.small.fontSize))
+    public var iconConfig = UIImage.SymbolConfiguration(pointSize: SFTintedSymbolSize.medium.pointSize)
     
     public convenience init() {
         self.init(item: SFTintedItem(), style: SFTintedIconStyle())
@@ -27,7 +27,9 @@ public class SFTintedIcon: UIImageView {
         if style.useSymbolConfiguration {
             iconConfig = style.symbolConfiguration
         }
+        
         layer.cornerRadius = style.cornerRadius
+        contentMode = .center
         
         refreshWithItem(item)
     }

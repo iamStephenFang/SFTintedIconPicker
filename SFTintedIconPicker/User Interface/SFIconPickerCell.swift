@@ -12,9 +12,9 @@ class SFIconPickerCell: UICollectionViewCell {
     static let identifier = NSStringFromClass(SFIconPickerCell.self)
     
     private lazy var iconView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
+        $0.contentMode = .center
+        return $0
+    }(UIImageView())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +29,7 @@ class SFIconPickerCell: UICollectionViewCell {
     }
     
     func setupSymbol(_ symbol: String) {
-        let imageConfig = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 23))
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 23)
         let color = SFTintedConfig.colors.iconTintedColor
         
         iconView.backgroundColor = SFTintedConfig.colors.iconPickerAreaBackgroundColor
