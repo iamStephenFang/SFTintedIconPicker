@@ -35,6 +35,8 @@
 		4D5FE3B6289BFC0500F21B6D /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FE3B5289BFC0500F21B6D /* Bundle+Extensions.swift */; };
 		4D5FE3B828A20D8300F21B6D /* SFTintedIconPickerTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FE3B728A20D8300F21B6D /* SFTintedIconPickerTitle.swift */; };
 		4D7612012892E70F007891C1 /* SFTintedIconPickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7612002892E70F007891C1 /* SFTintedIconPickerConfiguration.swift */; };
+		4DA65AFF28A4F8740022ADB5 /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA65AFE28A4F8740022ADB5 /* LocalizationHelper.swift */; };
+		4DA65B0628A4FA0A0022ADB5 /* SFTintedIconPickerLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DA65B0828A4FA0A0022ADB5 /* SFTintedIconPickerLocalizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,9 @@
 		4D5FE3BF28A2559600F21B6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D5FE3C028A2559600F21B6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D7612002892E70F007891C1 /* SFTintedIconPickerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTintedIconPickerConfiguration.swift; sourceTree = "<group>"; };
+		4DA65AFE28A4F8740022ADB5 /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
+		4DA65B0728A4FA0A0022ADB5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SFTintedIconPickerLocalizable.strings"; sourceTree = "<group>"; };
+		4DA65B0B28A4FA880022ADB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SFTintedIconPickerLocalizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				4D0B07FC2894E62A00412B88 /* sfsymbols.txt */,
+				4DA65B0828A4FA0A0022ADB5 /* SFTintedIconPickerLocalizable.strings */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				4D5FE3B5289BFC0500F21B6D /* Bundle+Extensions.swift */,
+				4DA65AFE28A4F8740022ADB5 /* LocalizationHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -310,6 +317,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 4D572A072892907700265841;
 			productRefGroup = 4D572A122892907700265841 /* Products */;
@@ -329,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D0B07FD2894E62A00412B88 /* sfsymbols.txt in Resources */,
+				4DA65B0628A4FA0A0022ADB5 /* SFTintedIconPickerLocalizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +374,7 @@
 				4D0A17532894399100644856 /* SFTintedIconStyle.swift in Sources */,
 				4D0A1744289409D500644856 /* SFTintedIconSize.swift in Sources */,
 				4D572A462892929300265841 /* SFTintedIconPicker.swift in Sources */,
+				4DA65AFF28A4F8740022ADB5 /* LocalizationHelper.swift in Sources */,
 				4D0B07F62894D9B500412B88 /* SFColorPickerCell.swift in Sources */,
 				4D572A162892907700265841 /* SFTintedIconPicker.docc in Sources */,
 				4D572A442892927A00265841 /* SFTintedIcon.swift in Sources */,
@@ -420,6 +430,15 @@
 				4D5FE3C028A2559600F21B6D /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4DA65B0828A4FA0A0022ADB5 /* SFTintedIconPickerLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DA65B0728A4FA0A0022ADB5 /* zh-Hans */,
+				4DA65B0B28A4FA880022ADB5 /* en */,
+			);
+			name = SFTintedIconPickerLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

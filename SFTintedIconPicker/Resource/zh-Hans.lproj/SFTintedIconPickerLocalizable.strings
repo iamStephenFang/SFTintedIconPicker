@@ -1,0 +1,13 @@
+/* 
+  SFTintedIconPickerLocalizable.strings
+  SFTintedIconPicker
+
+  Created by StephenFang on 2022/8/11.
+  
+*/
+
+"SFTintedIconPickerNavigationTitle" = "图标";
+"SFTintedIconPickerSearchBarPlaceHolder" = "搜索符号";
+"SFTintedIconPickerCancel" = "取消";
+"SFTintedIconPickerDone" = "完成";
+

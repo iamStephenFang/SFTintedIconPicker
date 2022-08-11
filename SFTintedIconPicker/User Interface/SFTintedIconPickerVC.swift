@@ -18,14 +18,22 @@ open class SFTintedIconPickerVC: UIViewController {
     private let colorPicker = SFColorPicker()
     private let iconPicker = SFIconPicker()
     
+    /// Private callbacks to SFTintedIconPicker
+    public var didClose:(() -> Void)?
+    public var didSelectItem: ((SFTintedItem) -> Void)?
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = SFTintedConfig.titles.navigationTitle
-        
+        setUpNavigation()
         setUpIconArea()
         setUpColorPickerArea()
         setUpSymbolPickerArea()
+    }
+    
+    private func setUpNavigation() {
+        navigationItem.title = SFTintedConfig.titles.navigationTitle
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: SFTintedConfig.titles.navigationFinishTitle, style: .done, target: self, action: #selector(done))
     }
     
     private func setUpIconArea() {
@@ -51,6 +59,10 @@ open class SFTintedIconPickerVC: UIViewController {
         iconPicker.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, y: colorPicker.frame.maxY + SFTintedConfig.layoutInfos.iconPickerAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, height: 500)
         iconPicker.layer.cornerRadius = 10.0
         view.addSubview(iconPicker)
+    }
+    
+    @objc func done() {
+        self.didSelectItem!(item)
     }
 }
 

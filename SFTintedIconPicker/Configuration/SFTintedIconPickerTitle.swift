@@ -9,16 +9,7 @@ import Foundation
 
 public struct SFTintedIconPickerTitle {
     
-    public var navigationTitle = NSLocalizedString("SFTintedIconPickerNavigationTitle",
-                                                   tableName: "SFTintedIconPickerLocalizable",
-                                                   bundle: Bundle.local,
-                                                   value: "",
-                                                   comment: "")
-    
-    public var searchBarPlaceHolder = NSLocalizedString("SFTintedIconPickerSearchBarPlaceHolder",
-                                                   tableName: "SFTintedIconPickerLocalizable",
-                                                   bundle: Bundle.local,
-                                                   value: "",
-                                                   comment: "")
-    
+    public var navigationTitle = localizedStringInSFTintedIconPicker("SFTintedIconPickerNavigationTitle")
+    public var navigationFinishTitle = localizedStringInSFTintedIconPicker("SFTintedIconPickerNavigationFinishTitle")
+    public var searchBarPlaceHolder = localizedStringInSFTintedIconPicker("SFTintedIconPickerSearchBarPlaceHolder")
 }
