@@ -11,7 +11,7 @@ import SFTintedIconPicker
 enum LayoutInfo {
     static let buttonHeight = CGFloat(50.0)
     static let buttonWidth = CGFloat(120.0)
-    static let buttonMargin = CGFloat(300.0)
+    static let buttonMargin = CGFloat(300.0) 
 }
 
 class ViewController: UIViewController {
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         $0.layer.cornerRadius = 10.0
         $0.addTarget(self, action: #selector(showIconPicker), for: .touchUpInside)
         return $0
-    } (UIButton(type: .system))
+    } (UIButton(type: .custom))
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,19 +10,13 @@ import UIKit
 public struct SFTintedIconStyle {
     
     /// The size which is used for icon
-    public var iconSize = SFTintedIconSize.small
+    public var iconSize = SFTintedIconSize.large
     
     /// Use this property to modify the default colors provided.
-    public var iconColor = UIColor.yellow
-    
-    /// Use this property to modify the default colors provided.
-    public var symbolSize = SFTintedSymbolSize.small
-    
-    /// Use this property to modify the default colors provided.
-    public var symbolWeight = UIImage.SymbolWeight.regular
+    public var symbolSize = SFTintedSymbolSize.medium
     
     /// The corner Radius which is used for demo icon
-    public var cornerRadius = CGFloat(5.0)
+    public var cornerRadius = CGFloat(15.0)
     
     // MARK: - Use SymbolConfiguration instead
     
@@ -30,8 +24,8 @@ public struct SFTintedIconStyle {
     public var useSymbolConfiguration: Bool = false
     
     /// The size which is used for symbol
-    public var symbolConfiguration = UIImage.SymbolConfiguration(pointSize: SFTintedSymbolSize.small.pointSize)
-    
+    public var symbolConfiguration = UIImage.SymbolConfiguration(font: .systemFont(ofSize: SFTintedSymbolSize.small.fontSize))
+
 }
 
 public enum SFTintedSymbolSize {
@@ -39,7 +33,7 @@ public enum SFTintedSymbolSize {
     /// 24
     case small
     
-    /// 30
+    /// 33
     case medium
     
     /// 42
@@ -48,11 +42,11 @@ public enum SFTintedSymbolSize {
     /// Custom size
     case custom(_ size: CGFloat)
     
-    var pointSize: CGFloat {
+    var fontSize: CGFloat {
         switch self {
         case .small: return CGFloat(24)
-        case .medium: return CGFloat(30)
-        case .large: return CGFloat(42)
+        case .medium: return CGFloat(33)
+        case .large: return CGFloat(60)
         case .custom(let size): return CGFloat(size)
         }
     }

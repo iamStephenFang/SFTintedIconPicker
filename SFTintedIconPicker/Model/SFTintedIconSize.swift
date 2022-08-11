@@ -15,7 +15,7 @@ public enum SFTintedIconSize {
     /// 44 * 44
     case medium
     
-    /// 56 * 56
+    /// 61 * 61
     case large
     
     /// Custom size
@@ -25,7 +25,7 @@ public enum SFTintedIconSize {
         switch self {
         case .small: return CGSize(width: 30, height: 30)
         case .medium: return CGSize(width: 44, height: 44)
-        case .large: return CGSize(width: 56, height: 56)
+        case .large: return CGSize(width: 61, height: 61)
         case .custom(let size): return CGSize(width: size.width, height: size.height)
         }
     }

@@ -34,7 +34,6 @@
 		4D572A462892929300265841 /* SFTintedIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D572A452892929300265841 /* SFTintedIconPicker.swift */; };
 		4D5FE3B6289BFC0500F21B6D /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FE3B5289BFC0500F21B6D /* Bundle+Extensions.swift */; };
 		4D5FE3B828A20D8300F21B6D /* SFTintedIconPickerTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FE3B728A20D8300F21B6D /* SFTintedIconPickerTitle.swift */; };
-		4D5FE3BA28A2368400F21B6D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5FE3B928A2368400F21B6D /* String+Extensions.swift */; };
 		4D7612012892E70F007891C1 /* SFTintedIconPickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7612002892E70F007891C1 /* SFTintedIconPickerConfiguration.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +76,6 @@
 		4D572A452892929300265841 /* SFTintedIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTintedIconPicker.swift; sourceTree = "<group>"; };
 		4D5FE3B5289BFC0500F21B6D /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		4D5FE3B728A20D8300F21B6D /* SFTintedIconPickerTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTintedIconPickerTitle.swift; sourceTree = "<group>"; };
-		4D5FE3B928A2368400F21B6D /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4D5FE3BF28A2559600F21B6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D5FE3C028A2559600F21B6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D7612002892E70F007891C1 /* SFTintedIconPickerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTintedIconPickerConfiguration.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				4D5FE3B5289BFC0500F21B6D /* Bundle+Extensions.swift */,
-				4D5FE3B928A2368400F21B6D /* String+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -372,7 +369,6 @@
 				4D572A162892907700265841 /* SFTintedIconPicker.docc in Sources */,
 				4D572A442892927A00265841 /* SFTintedIcon.swift in Sources */,
 				4D0A174F2894161200644856 /* SFTintedIconPickerSize.swift in Sources */,
-				4D5FE3BA28A2368400F21B6D /* String+Extensions.swift in Sources */,
 				4D0B07F42894D86B00412B88 /* SFIconPicker.swift in Sources */,
 				4D0B07F82894DA0200412B88 /* SFIconPickerCell.swift in Sources */,
 				4D0A17512894168E00644856 /* SFTintedIconPickerColors.swift in Sources */,

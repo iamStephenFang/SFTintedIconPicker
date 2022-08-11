@@ -18,7 +18,7 @@ public struct SFTintedIconPickerLayoutInfo {
     public var iconAreaHorizontalMargin = CGFloat(16)
     
     /// The size which is used for icon
-    public var iconVerticalPadding = CGFloat(30)
+    public var iconVerticalPadding = CGFloat(17)
     
     // MARK: - Color Picker
     
@@ -29,10 +29,21 @@ public struct SFTintedIconPickerLayoutInfo {
     public var colorPickerAreaHorizontalMargin = CGFloat(16)
     
     /// The size which is used for icon
-    public var colorPickerVerticalPadding = CGFloat(30)
+    public var colorPickerVerticalPadding = CGFloat(16)
     
     /// The size which is used for icon
-    public var colorPickerHorizontalPadding = CGFloat(30)
+    public var colorPickerHorizontalPadding = CGFloat(16)
+    
+    // MARK: - Search Bar
+    
+    /// The size which is used for icon
+    public var searchBarTopPadding = CGFloat(14)
+    
+    /// The size which is used for icon
+    public var searchBarHorizontalPadding = CGFloat(12)
+    
+    /// The size which is used for icon
+    public var searchBarHeight = CGFloat(33)
     
     // MARK: - Icon Picker
     
@@ -46,9 +57,12 @@ public struct SFTintedIconPickerLayoutInfo {
     public var iconPickerAreaHorizontalMargin = CGFloat(16)
     
     /// The size which is used for icon
-    public var iconPickerVerticalPadding = CGFloat(30)
+    public var iconPickerTopPadding = CGFloat(20)
     
     /// The size which is used for icon
-    public var iconPickerHorizontalPadding = CGFloat(30)
+    public var iconPickerBottomPadding = CGFloat(20)
+    
+    /// The size which is used for icon
+    public var iconPickerHorizontalPadding = CGFloat(14)
     
 }

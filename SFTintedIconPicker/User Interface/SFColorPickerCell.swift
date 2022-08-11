@@ -20,7 +20,8 @@ class SFColorPickerCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.layer.cornerRadius = SFTintedConfig.sizes.pickIconSize.rect.width / 2.0
+        contentView.layer.cornerRadius = CGFloat(SFTintedConfig.sizes.colorIconSize) / 2.0
+        contentView.layer.masksToBounds = true
     }
     
     required init?(coder: NSCoder) {
@@ -40,10 +41,6 @@ class SFColorPickerCell: UICollectionViewCell {
         } else {
             contentView.backgroundColor = color.backgroundColor
         }
-    }
-    
-    func setupPicker() {
-        
     }
 }
 

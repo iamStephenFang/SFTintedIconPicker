@@ -13,6 +13,6 @@ public class SFTintedItem {
     public var iconColor = SFTintedColor()
     
     /// SFSymbols icon name
-    public var iconName = ""
+    public var iconName = "square.and.arrow.up"
     
 }

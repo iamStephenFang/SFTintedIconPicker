@@ -19,12 +19,6 @@ public struct SFTintedIconPickerColors {
     
     /// The text color to use for picker' s title.
     public var pickerTitleColor = UIColor.label
-    
-    /// The background color to use for search bar.
-    public var searchBarBackgroundColor = UIColor.secondarySystemBackground
-    
-    /// The text color to use for search bar' s placeholder.
-    public var searchBarPlaceholderTextColor = UIColor.placeholderText
   
     // MARK: - Icon
     
@@ -53,6 +47,14 @@ public struct SFTintedIconPickerColors {
     
     /// Use this property to modify the default colors provided.
     public var colorPickerSelectedCircleColor = UIColor.clear
+    
+    // MARK: - Search Bar
+    
+    /// The background color to use for search bar.
+    public var searchBarBackgroundColor = UIColor.secondarySystemBackground
+    
+    /// The text color to use for search bar' s placeholder.
+    public var searchBarPlaceholderTextColor = UIColor.placeholderText
     
     // MARK: - Icon Picker
     

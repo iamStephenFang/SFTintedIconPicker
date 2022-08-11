@@ -15,9 +15,8 @@ public struct SFTintedIconPickerConfiguration {
     
     public init() {}
     
-    // TODO: Remove
-    /// The title for picker
-    public var title: String = "Picker"
+    /// iOS 14 +
+    public var showSystemColorPicker = true
     
     /// Use this property to modify the default colors provided.
     public var colors = SFTintedIconPickerColors()
@@ -28,4 +27,6 @@ public struct SFTintedIconPickerConfiguration {
     /// Use this property to modify the default sizes provided.
     public var layoutInfos = SFTintedIconPickerLayoutInfo()
     
+    /// Use this property to modify the default sizes provided.
+    public var titles = SFTintedIconPickerTitle()
 }

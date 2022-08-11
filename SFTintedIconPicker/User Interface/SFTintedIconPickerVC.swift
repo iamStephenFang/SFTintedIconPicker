@@ -9,30 +9,19 @@ import UIKit
 
 open class SFTintedIconPickerVC: UIViewController {
     
-    private lazy var iconView: SFTintedIcon = {
-        var item = SFTintedItem()
-        var style = SFTintedIconStyle()
-        return SFTintedIcon(item: item, style: style)
-    }()
+    private let item = SFTintedItem()
+    private let style = SFTintedIconStyle()
     
-    private lazy var iconBackgroundView: UIView = {
-        $0.backgroundColor = SFTintedConfig.colors.iconAreaBackgroundColor
-        return $0
-    }(UIView())
+    private var iconView = SFTintedIcon()
+    private let iconBackgroundView = UIView()
     
-    private lazy var colorPicker: SFColorPicker = {
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        return SFColorPicker(collectionViewLayout: collectionViewLayout)
-    }()
-    
-    private lazy var iconPicker: SFIconPicker = {
-        return SFIconPicker()
-    }()
+    private let colorPicker = SFColorPicker()
+    private let iconPicker = SFIconPicker()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = SFTintedConfig.title
+        navigationItem.title = SFTintedConfig.titles.navigationTitle
         
         setUpIconArea()
         setUpColorPickerArea()
@@ -40,6 +29,7 @@ open class SFTintedIconPickerVC: UIViewController {
     }
     
     private func setUpIconArea() {
+        iconBackgroundView.backgroundColor = SFTintedConfig.colors.iconAreaBackgroundColor
         iconBackgroundView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, y: self.navigationController!.navigationBar.frame.height + SFTintedConfig.layoutInfos.iconAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, height: SFTintedConfig.layoutInfos.iconVerticalPadding * 2 + SFTintedConfig.sizes.demoIconSize.rect.height)
         iconBackgroundView.layer.cornerRadius = 10.0
         view.addSubview(iconBackgroundView)
@@ -49,15 +39,51 @@ open class SFTintedIconPickerVC: UIViewController {
     }
     
     private func setUpColorPickerArea() {
-        colorPicker.view.frame = CGRect(x: SFTintedConfig.layoutInfos.colorPickerAreaHorizontalMargin, y: iconBackgroundView.frame.maxY + SFTintedConfig.layoutInfos.colorPickerAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.colorPickerAreaHorizontalMargin, height: colorPicker.height())
-        colorPicker.view.layer.cornerRadius = 10.0
-        view.addSubview(colorPicker.view)
+        colorPicker.colorPickerDelegate = self
+        colorPicker.frame = CGRect(x: SFTintedConfig.layoutInfos.colorPickerAreaHorizontalMargin, y: iconBackgroundView.frame.maxY + SFTintedConfig.layoutInfos.colorPickerAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.colorPickerAreaHorizontalMargin, height: 176)
+        colorPicker.layer.cornerRadius = 10.0
+        view.addSubview(colorPicker)
     }
     
     private func setUpSymbolPickerArea() {
+        iconPicker.iconPickerDelegate = self
         iconPicker.backgroundColor = SFTintedConfig.colors.iconPickerAreaBackgroundColor
-        iconPicker.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, y: colorPicker.view.frame.maxY + SFTintedConfig.layoutInfos.iconPickerAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, height: 500)
+        iconPicker.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, y: colorPicker.frame.maxY + SFTintedConfig.layoutInfos.iconPickerAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconPickerAreaHorizontalMargin, height: 500)
         iconPicker.layer.cornerRadius = 10.0
         view.addSubview(iconPicker)
+    }
+}
+
+extension SFTintedIconPickerVC: SFIconPickerDelegate {
+    func didSelectSymbol(_ symbol: String) {
+        item.iconName = symbol
+        iconView.refreshWithItem(item)
+    }
+}
+
+
+extension SFTintedIconPickerVC: SFColorPickerDelegate {
+    func didSelectColor(_ color: SFTintedColor) {
+        item.iconColor = color
+        iconView.refreshWithItem(item)
+    }
+    
+    func didSelectColorPicker() {
+        if #available(iOS 14.0, *) {
+            let vc = UIColorPickerViewController()
+            vc.delegate = self
+            present(vc, animated: true)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+}
+
+extension SFTintedIconPickerVC: UIColorPickerViewControllerDelegate {
+    @available(iOS 14.0, *)
+    public func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        let color = SFTintedColor(useGradientColor: false, backgroundColor: viewController.selectedColor)
+        item.iconColor = color
+        iconView.refreshWithItem(item)
     }
 }

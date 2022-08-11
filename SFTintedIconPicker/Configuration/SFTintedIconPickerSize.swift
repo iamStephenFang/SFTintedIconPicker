@@ -10,20 +10,15 @@ import Foundation
 public struct SFTintedIconPickerSizes {
     
     /// The size which is used for icon
-    public var demoIconSize = SFTintedIconSize.small
+    public var demoIconSize = SFTintedIconSize.large
     
     /// The size which is used for icon
-    public var demoSystemSize = SFTintedSymbolSize.small
+    public var colorIconSize = 35
     
     /// The size which is used for icon
-    public var pickIconSize = SFTintedIconSize.small
-    
-    /// The size which is used for icon
-    public var pickSymbolSize = SFTintedSymbolSize.small
+    public var pickIconSize = 40
     
     /// The size which is used for icon
     public var selectedIconSize = SFTintedIconSize.small
     
-    /// The size which is used for icon
-    public var selectedSymbolSize = SFTintedSymbolSize.small
 }

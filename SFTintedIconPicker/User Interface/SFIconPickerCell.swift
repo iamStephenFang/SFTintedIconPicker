@@ -29,8 +29,9 @@ class SFIconPickerCell: UICollectionViewCell {
     }
     
     func setupSymbol(_ symbol: String) {
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .light)
+        let imageConfig = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 23))
         let color = SFTintedConfig.colors.iconTintedColor
+        
         iconView.backgroundColor = SFTintedConfig.colors.iconPickerAreaBackgroundColor
         iconView.image = UIImage(systemName: symbol)?.withConfiguration(imageConfig).withTintColor(color, renderingMode: .alwaysOriginal)
     }

@@ -16,6 +16,8 @@ public struct SFTintedColor {
     public var backgroundGradientColors: [UIColor] = []
     
     /// Use this property to modify the default colors provided.
-    public var backgroundColor = UIColor.systemFill
+    public var backgroundColor = UIColor.red
     
+    /// Use this property to modify the default colors provided.
+    public var tintColor = UIColor.white
 }
