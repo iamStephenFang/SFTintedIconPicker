@@ -20,8 +20,11 @@ class SFIconPickerCell: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.addSubview(iconView)
-        contentView.layer.cornerRadius = 3.0
         iconView.frame = contentView.frame
+        
+        selectedBackgroundView = UIView(frame: contentView.frame)
+        selectedBackgroundView?.backgroundColor = SFTintedConfig.colors.iconPickerSelectedBackgroundColor
+        selectedBackgroundView?.layer.cornerRadius = 7.0
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +35,6 @@ class SFIconPickerCell: UICollectionViewCell {
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 23)
         let color = SFTintedConfig.colors.iconTintedColor
         
-        iconView.backgroundColor = SFTintedConfig.colors.iconPickerAreaBackgroundColor
         iconView.image = UIImage(systemName: symbol)?.withConfiguration(imageConfig).withTintColor(color, renderingMode: .alwaysOriginal)
     }
 }

@@ -16,25 +16,30 @@ class SFColorPicker: UIView {
     
     fileprivate lazy var collectionView : UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = CGFloat(15)
-        layout.minimumInteritemSpacing = CGFloat(20)
+        layout.minimumLineSpacing = SFTintedConfig.layoutInfos.colorPickerMinimumLineSpacing
+        layout.minimumInteritemSpacing = SFTintedConfig.layoutInfos.colorPickerMinimumInteritemSpacing
         
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         return collectionView
     } ()
     
     public weak var colorPickerDelegate: SFColorPickerDelegate?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    required init(color: SFTintedColor) {
+        super.init(frame: CGRect.zero)
+        
+        backgroundColor = SFTintedConfig.colors.colorPickerAreaBackgroundColor
         
         addSubview(collectionView)
-        backgroundColor = SFTintedConfig.colors.colorPickerAreaBackgroundColor
         collectionView.register(SFColorPickerCell.self, forCellWithReuseIdentifier: SFColorPickerCell.identifier)
+        if let selectIndex = SFTintedConfig.colors.providedColors.firstIndex(of: color) {
+            collectionView.selectItem(at: IndexPath(item: selectIndex, section: 0), animated: false, scrollPosition: .top)
+        } else {
+            collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .top)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -44,11 +49,18 @@ class SFColorPicker: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        collectionView.frame = CGRect(x: SFTintedConfig.layoutInfos.colorPickerHorizontalPadding, y: SFTintedConfig.layoutInfos.colorPickerVerticalPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, height: frame.size.height - 2 * SFTintedConfig.layoutInfos.colorPickerVerticalPadding)
+        collectionView.frame = CGRect(x: SFTintedConfig.layoutInfos.colorPickerHorizontalPadding, y: SFTintedConfig.layoutInfos.colorPickerVerticalPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.colorPickerHorizontalPadding, height: collectionViewHeight())
+    }
+    
+    private func collectionViewHeight() -> CGFloat {
+        let columnCount = CGFloat(6)
+        let colorCount = CGFloat(SFTintedConfig.colors.providedColors.count)
+        let rowCount = CGFloat(ceil(colorCount / columnCount))
+        return rowCount * SFTintedConfig.sizes.colorIconSize + (rowCount - 1) * SFTintedConfig.layoutInfos.colorPickerMinimumLineSpacing
     }
     
     public func height() -> CGFloat {
-        return 176
+        return collectionViewHeight() + SFTintedConfig.layoutInfos.colorPickerVerticalPadding * 2
     }
 }
 
@@ -86,7 +98,6 @@ extension SFColorPicker: UICollectionViewDataSource {
                             
 extension SFColorPicker: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         if #available(iOS 14.0, *), SFTintedConfig.showSystemColorPicker {
             if indexPath.item == SFTintedConfig.colors.providedColors.count {
                 colorPickerDelegate?.didSelectColorPicker()

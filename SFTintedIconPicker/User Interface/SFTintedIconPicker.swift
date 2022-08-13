@@ -56,7 +56,7 @@ open class SFTintedIconPicker: UINavigationController {
         
         if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
+            appearance.configureWithDefaultBackground()
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
             UINavigationBar.appearance().compactAppearance = appearance
@@ -65,8 +65,6 @@ open class SFTintedIconPicker: UINavigationController {
         }
         
         navigationBar.tintColor = SFTintedConfig.colors.pickerTintColor
-        
-        view.backgroundColor = SFTintedConfig.colors.pickerBackgroundColor
     }
     
     deinit {

@@ -7,5 +7,6 @@
 */
 
 "SFTintedIconPickerNavigationTitle" = "Icon";
-"SFTintedIconPickerSearchBarPlaceHolder" = "Search symbol";
+"SFTintedIconPickerSearchBarPlaceHolder" = "Search Symbols";
+"SFTintedIconPickerCancel" = "Cancel";
 "SFTintedIconPickerDone" = "Done";

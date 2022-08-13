@@ -46,7 +46,7 @@ public struct SFTintedIconPickerColors {
     public var colorPickerAreaBackgroundColor = UIColor.systemBackground
     
     /// Use this property to modify the default colors provided.
-    public var colorPickerSelectedCircleColor = UIColor.clear
+    public var colorPickerSelectedCircleColor = UIColor.systemFill
     
     // MARK: - Search Bar
     
@@ -62,7 +62,7 @@ public struct SFTintedIconPickerColors {
     public var iconPickerSelectedTintedColor = UIColor.secondarySystemBackground
     
     /// The background color to use for selected icon..
-    public var iconPickerSelectedBackgroundColor = UIColor.secondarySystemBackground
+    public var iconPickerSelectedBackgroundColor = UIColor.systemFill
     
     /// Use this property to modify the default colors provided.
     public var iconPickerAreaBackgroundColor = UIColor.systemBackground

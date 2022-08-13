@@ -17,11 +17,10 @@ open class SFTintedIconPickerVC: UIViewController {
     private var iconView = SFTintedIcon()
     private let iconBackgroundView = UIView()
     
-    private let colorPicker = SFColorPicker()
-    private let iconPicker = SFIconPicker()
+    private let colorPicker = SFColorPicker(color: SFTintedColor())
+    private let iconPicker = SFIconPicker(symbol: SFIconPicker.symbols.first ?? "")
     
     /// Private callbacks to SFTintedIconPicker
-    public var didClose:(() -> Void)?
     public var didSelectItem: ((SFTintedItem) -> Void)?
     
     public override func viewDidLoad() {
@@ -41,6 +40,7 @@ open class SFTintedIconPickerVC: UIViewController {
     
     private func setUpScrollView() {
         view.addSubview(scrollView)
+        scrollView.backgroundColor = SFTintedConfig.colors.pickerBackgroundColor
         scrollView.frame = view.bounds
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: contentHeight())
     }
@@ -71,7 +71,7 @@ open class SFTintedIconPickerVC: UIViewController {
     }
     
     @objc func done() {
-        self.didSelectItem!(item)
+        didSelectItem?(item)
     }
     
     private func contentHeight() -> CGFloat {

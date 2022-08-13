@@ -34,6 +34,12 @@ public struct SFTintedIconPickerLayoutInfo {
     /// The size which is used for icon
     public var colorPickerHorizontalPadding = CGFloat(16)
     
+    /// The size which is used for icon
+    public var colorPickerMinimumLineSpacing = CGFloat(15)
+    
+    /// The size which is used for icon
+    public var colorPickerMinimumInteritemSpacing = CGFloat(20)
+    
     // MARK: - Search Bar
     
     /// The size which is used for icon

@@ -12,16 +12,21 @@ class SFColorPickerCell: UICollectionViewCell {
     static let identifier = NSStringFromClass(SFColorPickerCell.self)
     
     private lazy var gradientLayer: CAGradientLayer = {
-        let layer = CAGradientLayer()
-        layer.shouldRasterize = true
-        return layer
-    }()
+        $0.shouldRasterize = true
+        return $0
+    } (CAGradientLayer())
+    
+    private lazy var selectedLayer: CAShapeLayer = {
+        return $0
+    } (CAShapeLayer())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         contentView.layer.cornerRadius = CGFloat(SFTintedConfig.sizes.colorIconSize) / 2.0
         contentView.layer.masksToBounds = true
+        
+        selectedBackgroundView = SFColorPickerCellCircleView()
     }
     
     required init?(coder: NSCoder) {
@@ -44,3 +49,20 @@ class SFColorPickerCell: UICollectionViewCell {
     }
 }
 
+class SFColorPickerCellCircleView: UIView {
+    let circleLayer = CAShapeLayer()
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        guard circleLayer.superlayer == nil else { return }
+        let size = CGFloat(SFTintedConfig.sizes.colorIconSize + 14.0)
+        let radius = size / 2.0
+        circleLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size, height: size), cornerRadius: radius).cgPath
+        circleLayer.position = CGPoint(x: self.frame.midX - radius, y: self.frame.midY - radius)
+        circleLayer.fillColor = SFTintedConfig.colors.colorPickerSelectedCircleColor.cgColor
+        circleLayer.lineWidth = 3.0
+//        circleLayer.strokeColor = SFTintedConfig.colors.colorPickerSelectedCircleColor.cgColor
+        self.layer.addSublayer(circleLayer)
+    }
+}

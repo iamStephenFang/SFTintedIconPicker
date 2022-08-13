@@ -7,7 +7,7 @@
 
 import UIKit
 
-public struct SFTintedColor {
+public struct SFTintedColor: Equatable {
     
     /// Use this property to modify the default colors provided.
     public var useGradientColor: Bool = false

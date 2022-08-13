@@ -11,7 +11,7 @@ protocol SFIconPickerDelegate: AnyObject {
     func didSelectSymbol(_ symbol: String)
 }
 
-class SFIconPicker : UIView {
+class SFIconPicker: UIView {
     
     fileprivate lazy var collectionView : UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
@@ -27,15 +27,17 @@ class SFIconPicker : UIView {
     } ()
     
     fileprivate lazy var searchBar: UISearchBar = {
+        $0.searchBarStyle = .minimal
+        $0.delegate = self
         $0.backgroundColor = SFTintedConfig.colors.searchBarBackgroundColor
         $0.searchTextField.textColor = SFTintedConfig.colors.searchBarPlaceholderTextColor
         $0.placeholder = SFTintedConfig.titles.searchBarPlaceHolder
         return $0
-    }(UISearchBar())
+    } (UISearchBar())
 
     public weak var iconPickerDelegate: SFIconPickerDelegate?
     
-    private static let symbols: [String] = {
+    static let symbols: [String] = {
         guard let path = Bundle.local.path(forResource: "sfsymbols", ofType: "txt"),
               let content = try? String(contentsOfFile: path)
         else {
@@ -46,13 +48,20 @@ class SFIconPicker : UIView {
             .map { String($0) }
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    required init(symbol: String) {
+        super.init(frame: CGRect.zero)
+        
+        backgroundColor = SFTintedConfig.colors.iconPickerAreaBackgroundColor
         
         addSubview(searchBar)
         
         addSubview(collectionView)
         collectionView.register(SFIconPickerCell.self, forCellWithReuseIdentifier: SFIconPickerCell.identifier)
+        if let selectIndex = SFIconPicker.symbols.firstIndex(of: symbol) {
+            collectionView.selectItem(at: IndexPath(item: selectIndex, section: 0), animated: false, scrollPosition: .top)
+        } else {
+            collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .top)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -63,6 +72,7 @@ class SFIconPicker : UIView {
         super.layoutSubviews()
      
         searchBar.frame = CGRect(x: SFTintedConfig.layoutInfos.searchBarHorizontalPadding, y: SFTintedConfig.layoutInfos.searchBarTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.searchBarHorizontalPadding, height: SFTintedConfig.layoutInfos.searchBarHeight)
+        searchBar.sizeToFit()
         
         collectionView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, y: searchBar.frame.maxY + SFTintedConfig.layoutInfos.iconPickerTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, height: collectionViewHeight())
     }
@@ -79,13 +89,13 @@ class SFIconPicker : UIView {
     }
 }
 
-extension SFIconPicker : UICollectionViewDelegate {
+extension SFIconPicker: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         iconPickerDelegate?.didSelectSymbol(SFIconPicker.symbols[indexPath.item])
     }
 }
 
-extension SFIconPicker : UICollectionViewDataSource {
+extension SFIconPicker: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return SFIconPicker.symbols.count
     }
@@ -97,8 +107,14 @@ extension SFIconPicker : UICollectionViewDataSource {
     }
 }
 
-extension SFIconPicker : UICollectionViewDelegateFlowLayout {
+extension SFIconPicker: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: SFTintedConfig.sizes.pickIconSize, height: SFTintedConfig.sizes.pickIconSize)
+    }
+}
+
+extension SFIconPicker: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
     }
 }
