@@ -40,13 +40,13 @@ class SFIconPicker: UIView {
     static let symbols: [String] = {
         guard let path = Bundle.local.path(forResource: "sfsymbols", ofType: "txt"),
               let content = try? String(contentsOfFile: path)
-        else {
-            return []
-        }
+        else { return [] }
         return content
             .split(separator: "\n")
             .map { String($0) }
     }()
+    private var filteredSymbols = [String]()
+    private var isSearching = false
     
     required init(symbol: String) {
         super.init(frame: CGRect.zero)
@@ -79,9 +79,13 @@ class SFIconPicker: UIView {
     
     private func collectionViewHeight() -> CGFloat {
         let columnCount = CGFloat(6)
-        let symbolCount = CGFloat(SFIconPicker.symbols.count)
+        var symbolCount = CGFloat(SFIconPicker.symbols.count)
+        if isSearching {
+            symbolCount = CGFloat(filteredSymbols.count)
+        }
         let rowCount = CGFloat(ceil(symbolCount / columnCount))
-        return rowCount * SFTintedConfig.sizes.pickIconSize + (rowCount - 1) * SFTintedConfig.layoutInfos.iconPickerMinimumLineSpacing
+        let separatorCount = max(rowCount - 1, 0)
+        return rowCount * SFTintedConfig.sizes.pickIconSize + separatorCount * SFTintedConfig.layoutInfos.iconPickerMinimumLineSpacing
     }
     
     public func height() -> CGFloat {
@@ -97,12 +101,21 @@ extension SFIconPicker: UICollectionViewDelegate {
 
 extension SFIconPicker: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return SFIconPicker.symbols.count
+        if isSearching {
+            return filteredSymbols.count
+        } else {
+            return SFIconPicker.symbols.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SFIconPickerCell.identifier, for: indexPath) as! SFIconPickerCell
-        cell.setupSymbol(SFIconPicker.symbols[indexPath.item])
+        if isSearching {
+            cell.setupSymbol(filteredSymbols[indexPath.item])
+        } else {
+            cell.setupSymbol(SFIconPicker.symbols[indexPath.item])
+        }
+        
         return cell
     }
 }
@@ -115,6 +128,13 @@ extension SFIconPicker: UICollectionViewDelegateFlowLayout {
 
 extension SFIconPicker: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        if searchText == "" {
+            isSearching = false
+        } else {
+            isSearching = true
+            filteredSymbols = SFIconPicker.symbols.filter({$0.contains(searchText.lowercased())})
+        }
+        collectionView.reloadData()
+        setNeedsLayout()
     }
 }

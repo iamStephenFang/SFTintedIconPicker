@@ -25,7 +25,6 @@ public struct SFTintedIconStyle {
     
     /// The size which is used for symbol
     public var symbolConfiguration = UIImage.SymbolConfiguration(pointSize:SFTintedSymbolSize.medium.pointSize)
-
 }
 
 public enum SFTintedSymbolSize {

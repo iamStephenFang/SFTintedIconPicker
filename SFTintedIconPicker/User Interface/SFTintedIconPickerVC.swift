@@ -21,6 +21,7 @@ open class SFTintedIconPickerVC: UIViewController {
     private let iconPicker = SFIconPicker(symbol: SFIconPicker.symbols.first ?? "")
     
     /// Private callbacks to SFTintedIconPicker
+    public var didClose:(() -> Void)?
     public var didSelectItem: ((SFTintedItem) -> Void)?
     
     public override func viewDidLoad() {

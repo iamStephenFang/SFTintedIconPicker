@@ -14,7 +14,7 @@ public protocol SFTintedIconPickerDelegate: AnyObject {
 
 open class SFTintedIconPicker: UINavigationController {
     
-    public typealias DidFinishPickingCompletion = (_ items: [SFTintedItem], _ cancelled: Bool) -> Void
+    public typealias DidFinishPickingCompletion = (_ item: SFTintedItem?, _ cancelled: Bool) -> Void
     
     // MARK: - Public
     
@@ -32,7 +32,6 @@ open class SFTintedIconPicker: UINavigationController {
         SFTintedIconPickerConfiguration.shared = configuration
         picker = SFTintedIconPickerVC()
         super.init(nibName: nil, bundle: nil)
-//        picker.pickerVCDelegate = self
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -47,12 +46,23 @@ open class SFTintedIconPicker: UINavigationController {
     
     private var _didFinishPicking: DidFinishPickingCompletion?
     
+    private func didSelect(item: SFTintedItem) {
+        _didFinishPicking?(item, false)
+    }
+    
     private let picker: SFTintedIconPickerVC!
     
     open override func viewDidLoad() {
         super.viewDidLoad()
         
         viewControllers = [picker]
+        
+        picker.didClose = { [weak self] in
+            self?._didFinishPicking?(nil, true)
+        }
+        picker.didSelectItem = { [weak self] item in
+            self?.didSelect(item: item)
+        }
         
         if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
@@ -63,7 +73,7 @@ open class SFTintedIconPicker: UINavigationController {
         } else {
             navigationBar.isTranslucent = false
         }
-        
+
         navigationBar.tintColor = SFTintedConfig.colors.pickerTintColor
     }
     

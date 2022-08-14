@@ -51,7 +51,7 @@ public struct SFTintedIconPickerColors {
     // MARK: - Search Bar
     
     /// The background color to use for search bar.
-    public var searchBarBackgroundColor = UIColor.secondarySystemBackground
+    public var searchBarBackgroundColor = UIColor.clear
     
     /// The text color to use for search bar' s placeholder.
     public var searchBarPlaceholderTextColor = UIColor.placeholderText
