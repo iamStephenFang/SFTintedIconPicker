@@ -12,8 +12,8 @@ open class SFTintedIconPickerVC: UIViewController {
     private let scrollView = UIScrollView()
     
     private let demoIconView = SFDemoIconView(item: SFTintedConfig.selectedItem)
-    private let colorPicker = SFColorPicker(color: SFTintedConfig.selectedItem.iconColor)
-    private let iconPicker = SFIconPicker(symbol: SFTintedConfig.selectedItem.iconName)
+    private let colorPicker = SFColorPicker(color: SFTintedConfig.selectedItem.itemColor)
+    private let iconPicker = SFIconPicker(symbol: SFTintedConfig.selectedItem.itemSymbol)
     
     /// Private callbacks to SFTintedIconPicker
     public var didClose:(() -> Void)?
@@ -42,7 +42,7 @@ open class SFTintedIconPickerVC: UIViewController {
     }
     
     private func setUpIconArea() {
-        demoIconView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, y:  SFTintedConfig.layoutInfos.iconAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, height: SFTintedConfig.layoutInfos.iconVerticalPadding * 2 + SFTintedConfig.sizes.demoIconSize.rect.height)
+        demoIconView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, y:  SFTintedConfig.layoutInfos.iconAreaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.layoutInfos.iconAreaHorizontalMargin, height: SFTintedConfig.layoutInfos.iconVerticalPadding * 2 + SFTintedConfig.layoutInfos.iconDisplaySize)
         demoIconView.layer.cornerRadius = 10.0
         scrollView.addSubview(demoIconView)
     }
@@ -67,7 +67,7 @@ open class SFTintedIconPickerVC: UIViewController {
     }
     
     private func contentHeight() -> CGFloat {
-        let iconAreaHeight = SFTintedConfig.layoutInfos.iconVerticalPadding * 2 + SFTintedConfig.sizes.demoIconSize.rect.height + SFTintedConfig.layoutInfos.iconAreaTopMargin
+        let iconAreaHeight = SFTintedConfig.layoutInfos.iconVerticalPadding * 2 + SFTintedConfig.layoutInfos.iconDisplaySize + SFTintedConfig.layoutInfos.iconAreaTopMargin
         let colorPickerAreaHeight = SFTintedConfig.layoutInfos.colorPickerAreaTopMargin + colorPicker.height()
         let iconPickerAreaHeight = SFTintedConfig.layoutInfos.iconPickerAreaTopMargin + iconPicker.height() + SFTintedConfig.layoutInfos.iconPickerAreaBottomMargin
         
@@ -84,7 +84,7 @@ open class SFTintedIconPickerVC: UIViewController {
 
 extension SFTintedIconPickerVC: SFIconPickerDelegate {
     func didSelectSymbol(_ symbol: String) {
-        SFTintedConfig.selectedItem.iconName = symbol
+        SFTintedConfig.selectedItem.itemSymbol = symbol
         demoIconView.refreshWithItem(SFTintedConfig.selectedItem)
     }
 }
@@ -92,13 +92,14 @@ extension SFTintedIconPickerVC: SFIconPickerDelegate {
 
 extension SFTintedIconPickerVC: SFColorPickerDelegate {
     func didSelectColor(_ color: SFTintedColor) {
-        SFTintedConfig.selectedItem.iconColor = color
+        SFTintedConfig.selectedItem.itemColor = color
         demoIconView.refreshWithItem(SFTintedConfig.selectedItem)
     }
     
     func didSelectColorPicker() {
         if #available(iOS 14.0, *) {
             let vc = UIColorPickerViewController()
+            vc.selectedColor = SFTintedConfig.selectedItem.itemColor.backgroundColor
             vc.delegate = self
             present(vc, animated: true)
         } else {
@@ -110,7 +111,7 @@ extension SFTintedIconPickerVC: SFColorPickerDelegate {
 extension SFTintedIconPickerVC: UIColorPickerViewControllerDelegate {
     @available(iOS 14.0, *)
     public func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        SFTintedConfig.selectedItem.iconColor = SFTintedColor(backgroundColor: viewController.selectedColor)
+        SFTintedConfig.selectedItem.itemColor = SFTintedColor(backgroundColor: viewController.selectedColor)
         demoIconView.refreshWithItem(SFTintedConfig.selectedItem)
     }
 }

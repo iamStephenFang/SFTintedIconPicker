@@ -9,20 +9,20 @@ import UIKit
 
 public class SFTintedIcon: UIImageView {
     
+    public var iconConfig = UIImage.SymbolConfiguration(pointSize: CGFloat(33))
+    
     private lazy var gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.shouldRasterize = true
         return layer
     }()
     
-    public var iconConfig = UIImage.SymbolConfiguration(pointSize: SFTintedSymbolSize.medium.pointSize)
-    
     public convenience init() {
         self.init(item: SFTintedItem(), style: SFTintedIconStyle())
     }
     
     public required init(item: SFTintedItem, style: SFTintedIconStyle) {
-        super.init(frame: CGRect(x: 0, y: 0, width: style.iconSize.rect.width, height: style.iconSize.rect.height))
+        super.init(frame: CGRect(x: 0, y: 0, width: style.iconSize, height: style.iconSize))
         
         if style.useSymbolConfiguration {
             iconConfig = style.symbolConfiguration
@@ -39,15 +39,15 @@ public class SFTintedIcon: UIImageView {
     }
     
     public func refreshWithItem(_ item: SFTintedItem) {
-        image = UIImage(systemName: item.iconName, withConfiguration: iconConfig)?.withTintColor(item.iconColor.tintColor, renderingMode: .alwaysOriginal)
+        image = UIImage(systemName: item.itemSymbol, withConfiguration: iconConfig)?.withTintColor(item.itemColor.tintColor, renderingMode: .alwaysOriginal)
         
-        if item.iconColor.backgroundGradientColors.count > 0 {
+        if item.itemColor.backgroundGradientColors.count > 0 {
             if gradientLayer.sublayers == nil {
                 layer.addSublayer(gradientLayer)
             }
-            gradientLayer.colors = item.iconColor.backgroundGradientColors.map{ $0.cgColor }
+            gradientLayer.colors = item.itemColor.backgroundGradientColors.map{ $0.cgColor }
         } else {
-            backgroundColor = item.iconColor.backgroundColor
+            backgroundColor = item.itemColor.backgroundColor
         }
     }
 }

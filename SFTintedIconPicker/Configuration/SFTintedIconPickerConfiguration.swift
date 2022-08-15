@@ -32,4 +32,8 @@ public struct SFTintedIconPickerConfiguration {
     
     /// Use this property to modify the default sizes provided.
     public var titles = SFTintedIconPickerTitle()
+    
+    /// If don't want to have logs from picker, set it to false.
+    public var isDebugLogsEnabled: Bool = true
+    
 }

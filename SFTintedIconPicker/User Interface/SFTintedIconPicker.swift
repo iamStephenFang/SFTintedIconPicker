@@ -78,7 +78,7 @@ open class SFTintedIconPicker: UINavigationController {
     }
     
     deinit {
-        print("SFTintedIconPicker deinit")
+        debugInfoForIconPicker("deinit")
     }
 }
 

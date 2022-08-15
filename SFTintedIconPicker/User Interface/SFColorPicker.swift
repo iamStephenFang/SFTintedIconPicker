@@ -38,7 +38,10 @@ class SFColorPicker: UIView {
         
         if let selectIndex = SFTintedConfig.colors.providedColors.firstIndex(of: color) {
             collectionView.selectItem(at: IndexPath(item: selectIndex, section: 0), animated: false, scrollPosition: .top)
+        } else if #available(iOS 14.0, *), SFTintedConfig.showSystemColorPicker {
+            collectionView.selectItem(at: IndexPath(item: SFTintedConfig.colors.providedColors.count, section: 0), animated: false, scrollPosition: .top)
         } else {
+            debugInfoForIconPicker("Cannot find color \(color)")
             collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .top)
         }
     }

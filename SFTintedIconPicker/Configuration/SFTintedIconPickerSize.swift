@@ -10,9 +10,6 @@ import Foundation
 public struct SFTintedIconPickerSizes {
     
     /// The size which is used for icon
-    public var demoIconSize = SFTintedIconSize.large
-    
-    /// The size which is used for icon
     public var colorIconSize = CGFloat(49)
     
     /// The size which is used for icon

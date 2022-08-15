@@ -27,7 +27,7 @@ class SFDemoIconView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        iconView.frame = CGRect(origin: CGPoint(x: (bounds.width - SFTintedConfig.sizes.demoIconSize.rect.width) / 2.0, y: (bounds.height - SFTintedConfig.sizes.demoIconSize.rect.height) / 2.0), size: SFTintedConfig.sizes.demoIconSize.rect)
+        iconView.frame = CGRect(origin: CGPoint(x: (bounds.width - SFTintedConfig.layoutInfos.iconDisplaySize) / 2.0, y: (bounds.height - SFTintedConfig.layoutInfos.iconDisplaySize) / 2.0), size: CGSize(width: SFTintedConfig.layoutInfos.iconDisplaySize, height: SFTintedConfig.layoutInfos.iconDisplaySize))
     }
     
     public func refreshWithItem(_ item: SFTintedItem) {

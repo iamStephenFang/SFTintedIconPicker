@@ -26,14 +26,14 @@ class ViewController: UIViewController {
     
     fileprivate lazy var actionButton: UIButton = {
         $0.setTitle("Customize", for: .normal)
-        $0.backgroundColor = .blue
+        $0.backgroundColor = .systemBlue
         $0.layer.cornerRadius = 10.0
         $0.addTarget(self, action: #selector(showIconPicker), for: .touchUpInside)
         return $0
     } (UIButton(type: .custom))
     
     private lazy var imageView: UIImageView = {
-        $0.backgroundColor = UIColor.gray
+        $0.backgroundColor = UIColor.red
         $0.contentMode = .center
         return $0
     }(UIImageView())
@@ -59,7 +59,6 @@ class ViewController: UIViewController {
         let picker = SFTintedIconPicker(configuration:config)
         picker.didFinishPicking { [self, unowned picker] item, cancelled in
             if cancelled {
-                print("SFTintedIconPicker was canceled")
                 picker.dismiss(animated: true, completion: nil)
                 return
             }
@@ -68,8 +67,8 @@ class ViewController: UIViewController {
                 self.currentItem = item
                 
                 self.iconView.refreshWithItem(item)
-                self.imageView.backgroundColor = item.iconColor.backgroundColor
-                self.imageView.image = UIImage(systemName: item.iconName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
+                self.imageView.backgroundColor = item.itemColor.backgroundColor
+                self.imageView.image = UIImage(systemName: item.itemSymbol, withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
                 picker.dismiss(animated: true, completion: nil)
             }
         }

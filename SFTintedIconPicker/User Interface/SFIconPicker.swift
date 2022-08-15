@@ -60,6 +60,7 @@ class SFIconPicker: UIView {
         if let selectIndex = SFIconPicker.symbols.firstIndex(of: symbol) {
             collectionView.selectItem(at: IndexPath(item: selectIndex, section: 0), animated: false, scrollPosition: .top)
         } else {
+            debugInfoForIconPicker("Cannot find symbol \(symbol)")
             collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .top)
         }
     }

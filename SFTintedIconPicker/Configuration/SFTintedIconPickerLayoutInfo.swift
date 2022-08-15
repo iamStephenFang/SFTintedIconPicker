@@ -20,6 +20,9 @@ public struct SFTintedIconPickerLayoutInfo {
     /// The size which is used for icon
     public var iconVerticalPadding = CGFloat(17)
     
+    /// The size which is used for icon
+    public var iconDisplaySize = CGFloat(61)
+    
     // MARK: - Color Picker
     
     /// The size which is used for icon
