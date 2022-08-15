@@ -9,6 +9,7 @@ import UIKit
 
 protocol SFIconPickerDelegate: AnyObject {
     func didSelectSymbol(_ symbol: String)
+    func didSearchKeyword(_ keyword: String)
 }
 
 class SFIconPicker: UIView {
@@ -54,8 +55,10 @@ class SFIconPicker: UIView {
         backgroundColor = SFTintedConfig.colors.iconPickerAreaBackgroundColor
         
         addSubview(searchBar)
+        searchBar.sizeToFit()
         
         addSubview(collectionView)
+        
         collectionView.register(SFIconPickerCell.self, forCellWithReuseIdentifier: SFIconPickerCell.identifier)
         if let selectIndex = SFIconPicker.symbols.firstIndex(of: symbol) {
             collectionView.selectItem(at: IndexPath(item: selectIndex, section: 0), animated: false, scrollPosition: .top)
@@ -65,39 +68,32 @@ class SFIconPicker: UIView {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
      
         searchBar.sizeToFit()
         searchBar.frame = CGRect(x: SFTintedConfig.iconPickerConfig.searchBarHorizontalPadding, y: SFTintedConfig.iconPickerConfig.searchBarTopPadding, width: frame.size.width - 2 * SFTintedConfig.iconPickerConfig.searchBarHorizontalPadding, height: SFTintedConfig.iconPickerConfig.searchBarHeight)
 
-        collectionView.frame = CGRect(x: SFTintedConfig.iconPickerConfig.horizontalPadding, y: searchBar.frame.maxY + SFTintedConfig.iconPickerConfig.topPadding, width: frame.size.width - 2 * SFTintedConfig.iconPickerConfig.horizontalPadding, height: collectionViewHeight())
+        collectionView.frame = CGRect(x: SFTintedConfig.iconPickerConfig.horizontalPadding, y: searchBar.frame.maxY + SFTintedConfig.iconPickerConfig.topPadding, width: frame.size.width - 2 * SFTintedConfig.iconPickerConfig.horizontalPadding, height: collectionView.collectionViewLayout.collectionViewContentSize.height)
     }
     
-    private func collectionViewHeight() -> CGFloat {
-        let columnCount = CGFloat(SFTintedConfig.iconPickerConfig.numberOfItemsInRow)
-        var symbolCount = CGFloat(SFIconPicker.symbols.count)
-        if isSearching {
-            symbolCount = CGFloat(filteredSymbols.count)
-        }
-        let rowCount = CGFloat(ceil(symbolCount / columnCount))
-        let separatorCount = max(rowCount - 1, 0)
-        return rowCount * itemSize() + separatorCount * SFTintedConfig.iconPickerConfig.minimumInteritemSpacing
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public
+    
+    public func height() -> CGFloat {
+        return collectionView.collectionViewLayout.collectionViewContentSize.height + SFTintedConfig.iconPickerConfig.bottomPadding + SFTintedConfig.iconPickerConfig.topPadding + SFTintedConfig.iconPickerConfig.searchBarTopPadding + SFTintedConfig.iconPickerConfig.searchBarHeight
+    }
+    
+    // MARK: - Private
     
     private func itemSize() -> CGFloat {
         let collectionViewWidth = frame.size.width - SFTintedConfig.iconPickerConfig.horizontalPadding * 2
         let numbersPerRow = CGFloat(SFTintedConfig.iconPickerConfig.numberOfItemsInRow)
         let itemsWidth = collectionViewWidth - (numbersPerRow - 1) * SFTintedConfig.iconPickerConfig.minimumLineSpacing
-        return itemsWidth / numbersPerRow
-    }
-    
-    public func height() -> CGFloat {
-        return collectionViewHeight() + SFTintedConfig.iconPickerConfig.bottomPadding + SFTintedConfig.iconPickerConfig.topPadding + SFTintedConfig.iconPickerConfig.searchBarTopPadding + SFTintedConfig.iconPickerConfig.searchBarHeight
+        return floor(itemsWidth / numbersPerRow)
     }
 }
 
@@ -123,7 +119,6 @@ extension SFIconPicker: UICollectionViewDataSource {
         } else {
             cell.setupSymbol(SFIconPicker.symbols[indexPath.item])
         }
-        
         return cell
     }
 }
@@ -143,6 +138,6 @@ extension SFIconPicker: UISearchBarDelegate {
             filteredSymbols = SFIconPicker.symbols.filter({$0.contains(searchText.lowercased())})
         }
         collectionView.reloadData()
-        setNeedsLayout()
+        iconPickerDelegate?.didSearchSymbol(searchText)
     }
 }

@@ -22,10 +22,10 @@ public struct SFColorPickerConfiguration {
     public var horizontalPadding = CGFloat(7)
     
     /// The minimum line spacing of color picker.  Defaults to 7.
-    public var minimumLineSpacing = CGFloat(7)
+    public var lineSpacing = CGFloat(7)
 
     /// The minimum interitem spacing of color picker.  Defaults to 2.
-    public var minimumInteritemSpacing = CGFloat(2)
+    public var interitemSpacing = CGFloat(2)
     
     /// The number of items per row in color picker.  Defaults to 6.
     public var numberOfItemsInRow: Int = 6

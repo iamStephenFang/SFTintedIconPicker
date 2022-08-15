@@ -119,12 +119,12 @@
 		4D0A173C2894050E00644856 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				4D5FE3B728A20D8300F21B6D /* SFTintedIconPickerTitle.swift */,
 				4D0A17502894168E00644856 /* SFTintedIconPickerColors.swift */,
 				4D7612002892E70F007891C1 /* SFTintedIconPickerConfiguration.swift */,
 				4DA51F9128AA4446004594F6 /* SFColorPickerConfiguration.swift */,
 				4DA51F9328AA4490004594F6 /* SFIconPickerConfiguration.swift */,
 				4DA51F9528AA4514004594F6 /* SFDemoIconConfiguration.swift */,
-				4D5FE3B728A20D8300F21B6D /* SFTintedIconPickerTitle.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";

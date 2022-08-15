@@ -82,11 +82,15 @@ open class SFTintedIconPickerVC: UIViewController {
                 .filter({$0.isKeyWindow}).first
         let bottomInsets = keyWindow?.safeAreaInsets.bottom
         
-        return iconAreaHeight + colorPickerAreaHeight + iconPickerAreaHeight + (bottomInsets ?? 0)
+        return iconAreaHeight + colorPickerAreaHeight + iconPickerAreaHeight + (bottomInsets ?? 16.0)
     }
 }
 
 extension SFTintedIconPickerVC: SFIconPickerDelegate {
+    func didSearchKeyword(_ keyword: String) {
+        viewDidLayoutSubviews()
+    }
+    
     func didSelectSymbol(_ symbol: String) {
         SFTintedConfig.selectedItem.itemSymbol = symbol
         demoIconView.refreshWithItem(SFTintedConfig.selectedItem)
