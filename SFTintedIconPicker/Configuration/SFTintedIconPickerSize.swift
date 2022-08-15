@@ -13,12 +13,15 @@ public struct SFTintedIconPickerSizes {
     public var demoIconSize = SFTintedIconSize.large
     
     /// The size which is used for icon
-    public var colorIconSize = CGFloat(35)
+    public var colorIconSize = CGFloat(49)
+    
+    /// The size which is used for icon
+    public var innerColorIconSize = CGFloat(35)
     
     /// The size which is used for icon
     public var pickIconSize = CGFloat(40)
     
     /// The size which is used for icon
-    public var selectedIconSize = SFTintedIconSize.small
+    public var selectedColorBorderWidth = CGFloat(2)
     
 }

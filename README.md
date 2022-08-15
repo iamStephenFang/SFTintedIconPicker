@@ -8,6 +8,7 @@ SFTintedIconPicker is a Shortcuts-like and highly customizable SFSymbol picker w
 - Search Symbols
 - Gradient Color Support
 - Native Color Picker (iOS 14+)
+
 And so much more...
 
 ## Installation

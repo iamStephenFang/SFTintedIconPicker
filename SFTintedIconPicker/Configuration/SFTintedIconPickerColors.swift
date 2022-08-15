@@ -34,13 +34,13 @@ public struct SFTintedIconPickerColors {
     // MARK: - Color Picker
     
     /// Use this property to modify the default colors provided.
-    public var providedColors : [SFTintedColor] = [SFTintedColor(useGradientColor: false, backgroundColor: .red),
-                                                   SFTintedColor(useGradientColor: false, backgroundColor: .orange),
-                                                   SFTintedColor(useGradientColor: false, backgroundColor: .yellow),
-                                                   SFTintedColor(useGradientColor: false, backgroundColor: .green),
-                                                   SFTintedColor(useGradientColor: false, backgroundColor: .cyan),
-                                                   SFTintedColor(useGradientColor: false, backgroundColor: .blue),
-                                                   SFTintedColor(useGradientColor: false, backgroundColor: .purple)]
+    public var providedColors : [SFTintedColor] = [SFTintedColor(backgroundColor: .red),
+                                                   SFTintedColor(backgroundColor: .orange),
+                                                   SFTintedColor(backgroundColor: .yellow),
+                                                   SFTintedColor(backgroundColor: .green),
+                                                   SFTintedColor(backgroundColor: .cyan),
+                                                   SFTintedColor(backgroundColor: .blue),
+                                                   SFTintedColor(backgroundColor: .purple)]
     
     /// Use this property to modify the default colors provided.
     public var colorPickerAreaBackgroundColor = UIColor.systemBackground

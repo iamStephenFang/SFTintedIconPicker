@@ -18,6 +18,9 @@ public struct SFTintedIconPickerConfiguration {
     /// iOS 14 +
     public var showSystemColorPicker = true
     
+    /// iOS 14 +
+    public var selectedItem = SFTintedItem()
+    
     /// Use this property to modify the default colors provided.
     public var colors = SFTintedIconPickerColors()
     

@@ -11,12 +11,18 @@ import SFTintedIconPicker
 enum LayoutInfo {
     static let iconSize = CGFloat(50.0)
     static let iconMargin = CGFloat(180.0)
+    static let imageSize = CGFloat(50.0)
+    static let imageMargin = CGFloat(250.0)
     static let buttonHeight = CGFloat(50.0)
     static let buttonWidth = CGFloat(120.0)
-    static let buttonMargin = CGFloat(350.0)
+    static let buttonMargin = CGFloat(380.0)
 }
 
 class ViewController: UIViewController {
+    
+    var currentItem = SFTintedItem()
+    
+    fileprivate var iconView = SFTintedIcon()
     
     fileprivate lazy var actionButton: UIButton = {
         $0.setTitle("Customize", for: .normal)
@@ -26,8 +32,8 @@ class ViewController: UIViewController {
         return $0
     } (UIButton(type: .custom))
     
-    private lazy var iconView: UIImageView = {
-        $0.backgroundColor = UIColor.red
+    private lazy var imageView: UIImageView = {
+        $0.backgroundColor = UIColor.gray
         $0.contentMode = .center
         return $0
     }(UIImageView())
@@ -38,6 +44,9 @@ class ViewController: UIViewController {
         view.addSubview(iconView)
         iconView.frame = CGRect(x: (view.bounds.size.width - LayoutInfo.iconSize) / 2, y: LayoutInfo.iconMargin, width: LayoutInfo.iconSize, height: LayoutInfo.iconSize)
         
+        view.addSubview(imageView)
+        imageView.frame = CGRect(x: (view.bounds.size.width - LayoutInfo.imageSize) / 2, y: LayoutInfo.imageMargin, width: LayoutInfo.imageSize, height: LayoutInfo.imageSize)
+        
         view.addSubview(actionButton)
         actionButton.frame = CGRect(x: (view.bounds.size.width - LayoutInfo.buttonWidth) / 2, y: LayoutInfo.buttonMargin, width: LayoutInfo.buttonWidth, height: LayoutInfo.buttonHeight)
     }
@@ -45,17 +54,24 @@ class ViewController: UIViewController {
     // MARK: Actions
     
     @objc private func showIconPicker() {
-        let config = SFTintedIconPickerConfiguration()
+        var config = SFTintedIconPickerConfiguration()
+        config.selectedItem = currentItem
         let picker = SFTintedIconPicker(configuration:config)
         picker.didFinishPicking { [self, unowned picker] item, cancelled in
-            if let item = item {
-                self.iconView.backgroundColor = item.iconColor.backgroundColor
-                self.iconView.image = UIImage(systemName: item.iconName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
-            }
             if cancelled {
-                print("Picker was canceled")
+                print("SFTintedIconPicker was canceled")
+                picker.dismiss(animated: true, completion: nil)
+                return
             }
-            picker.dismiss(animated: true, completion: nil)
+            
+            if let item = item {
+                self.currentItem = item
+                
+                self.iconView.refreshWithItem(item)
+                self.imageView.backgroundColor = item.iconColor.backgroundColor
+                self.imageView.image = UIImage(systemName: item.iconName, withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
+                picker.dismiss(animated: true, completion: nil)
+            }
         }
         present(picker, animated: true, completion: nil)
     }

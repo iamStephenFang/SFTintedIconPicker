@@ -35,6 +35,7 @@ class SFColorPicker: UIView {
         
         addSubview(collectionView)
         collectionView.register(SFColorPickerCell.self, forCellWithReuseIdentifier: SFColorPickerCell.identifier)
+        
         if let selectIndex = SFTintedConfig.colors.providedColors.firstIndex(of: color) {
             collectionView.selectItem(at: IndexPath(item: selectIndex, section: 0), animated: false, scrollPosition: .top)
         } else {
@@ -85,7 +86,7 @@ extension SFColorPicker: UICollectionViewDataSource {
                 cell.setupColor(SFTintedConfig.colors.providedColors[indexPath.item])
             } else {
                 let rainbowColor : [UIColor] = [.red, .orange, .yellow, .green, .cyan, .blue, .purple]
-                let tintColor = SFTintedColor(useGradientColor: true, backgroundGradientColors: rainbowColor)
+                let tintColor = SFTintedColor(backgroundGradientColors: rainbowColor)
                 cell.setupColor(tintColor)
             }
         } else {

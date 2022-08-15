@@ -41,7 +41,7 @@ public class SFTintedIcon: UIImageView {
     public func refreshWithItem(_ item: SFTintedItem) {
         image = UIImage(systemName: item.iconName, withConfiguration: iconConfig)?.withTintColor(item.iconColor.tintColor, renderingMode: .alwaysOriginal)
         
-        if item.iconColor.useGradientColor {
+        if item.iconColor.backgroundGradientColors.count > 0 {
             if gradientLayer.sublayers == nil {
                 layer.addSublayer(gradientLayer)
             }

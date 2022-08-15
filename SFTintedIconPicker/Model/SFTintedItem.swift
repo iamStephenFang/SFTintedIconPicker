@@ -15,4 +15,13 @@ public class SFTintedItem {
     /// SFSymbols icon name
     public var iconName = "square.and.arrow.up"
     
+    
+    /// <#Description#>
+    /// - Parameters:
+    ///   - iconColor: <#iconColor description#>
+    ///   - iconName: <#iconName description#>
+    public init(iconColor: SFTintedColor = SFTintedColor(), iconName: String = "square.and.arrow.up") {
+        self.iconColor = iconColor
+        self.iconName = iconName
+    }
 }

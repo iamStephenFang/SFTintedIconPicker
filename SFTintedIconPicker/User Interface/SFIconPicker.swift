@@ -71,9 +71,9 @@ class SFIconPicker: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
      
-        searchBar.frame = CGRect(x: SFTintedConfig.layoutInfos.searchBarHorizontalPadding, y: SFTintedConfig.layoutInfos.searchBarTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.searchBarHorizontalPadding, height: SFTintedConfig.layoutInfos.searchBarHeight)
         searchBar.sizeToFit()
-        
+        searchBar.frame = CGRect(x: SFTintedConfig.layoutInfos.searchBarHorizontalPadding, y: SFTintedConfig.layoutInfos.searchBarTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.searchBarHorizontalPadding, height: SFTintedConfig.layoutInfos.searchBarHeight)
+
         collectionView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, y: searchBar.frame.maxY + SFTintedConfig.layoutInfos.iconPickerTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, height: collectionViewHeight())
     }
     
