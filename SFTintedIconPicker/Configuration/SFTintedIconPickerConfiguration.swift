@@ -25,15 +25,20 @@ public struct SFTintedIconPickerConfiguration {
     public var colors = SFTintedIconPickerColors()
     
     /// Use this property to modify the default sizes provided.
-    public var sizes = SFTintedIconPickerSizes()
-    
-    /// Use this property to modify the default sizes provided.
-    public var layoutInfos = SFTintedIconPickerLayoutInfo()
-    
-    /// Use this property to modify the default sizes provided.
     public var titles = SFTintedIconPickerTitle()
     
     /// If don't want to have logs from picker, set it to false.
     public var isDebugLogsEnabled: Bool = true
+    
+    // MARK: - LayoutInfos
+    
+    /// Use this property to modify the default sizes provided.
+    public var demoIconConfig = SFDemoIconConfiguration()
+    
+    /// Use this property to modify the default sizes provided.
+    public var colorPickerConfig = SFColorPickerConfiguration()
+    
+    /// Use this property to modify the default sizes provided.
+    public var iconPickerConfig = SFIconPickerConfiguration()
     
 }

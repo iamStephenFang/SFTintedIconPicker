@@ -10,9 +10,7 @@
 		4D0A17402894069A00644856 /* SFTintedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A173F2894069A00644856 /* SFTintedItem.swift */; };
 		4D0A17422894074F00644856 /* SFTintedIconPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A17412894074F00644856 /* SFTintedIconPickerVC.swift */; };
 		4D0A174A28940FA800644856 /* SFColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A174928940FA800644856 /* SFColorPicker.swift */; };
-		4D0A174F2894161200644856 /* SFTintedIconPickerSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A174E2894161200644856 /* SFTintedIconPickerSize.swift */; };
 		4D0A17512894168E00644856 /* SFTintedIconPickerColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A17502894168E00644856 /* SFTintedIconPickerColors.swift */; };
-		4D0A17552894478500644856 /* SFTintedIconPickerLayoutInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A17542894478500644856 /* SFTintedIconPickerLayoutInfo.swift */; };
 		4D0B07F42894D86B00412B88 /* SFIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0B07F32894D86B00412B88 /* SFIconPicker.swift */; };
 		4D0B07F62894D9B500412B88 /* SFColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0B07F52894D9B500412B88 /* SFColorPickerCell.swift */; };
 		4D0B07F82894DA0200412B88 /* SFIconPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0B07F72894DA0200412B88 /* SFIconPickerCell.swift */; };
@@ -36,6 +34,9 @@
 		4DA51F8C28AA327E004594F6 /* SFDemoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA51F8B28AA327E004594F6 /* SFDemoIconView.swift */; };
 		4DA51F8E28AA35AF004594F6 /* SFTintedIconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA51F8D28AA35AF004594F6 /* SFTintedIconStyle.swift */; };
 		4DA51F9028AA3ECB004594F6 /* DebugLogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA51F8F28AA3ECB004594F6 /* DebugLogHelper.swift */; };
+		4DA51F9228AA4446004594F6 /* SFColorPickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA51F9128AA4446004594F6 /* SFColorPickerConfiguration.swift */; };
+		4DA51F9428AA4490004594F6 /* SFIconPickerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA51F9328AA4490004594F6 /* SFIconPickerConfiguration.swift */; };
+		4DA51F9628AA4514004594F6 /* SFDemoIconConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA51F9528AA4514004594F6 /* SFDemoIconConfiguration.swift */; };
 		4DA65AFF28A4F8740022ADB5 /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA65AFE28A4F8740022ADB5 /* LocalizationHelper.swift */; };
 		4DA65B0628A4FA0A0022ADB5 /* SFTintedIconPickerLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DA65B0828A4FA0A0022ADB5 /* SFTintedIconPickerLocalizable.strings */; };
 /* End PBXBuildFile section */
@@ -54,9 +55,7 @@
 		4D0A173F2894069A00644856 /* SFTintedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTintedItem.swift; sourceTree = "<group>"; };
 		4D0A17412894074F00644856 /* SFTintedIconPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTintedIconPickerVC.swift; sourceTree = "<group>"; };
 		4D0A174928940FA800644856 /* SFColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFColorPicker.swift; sourceTree = "<group>"; };
-		4D0A174E2894161200644856 /* SFTintedIconPickerSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTintedIconPickerSize.swift; sourceTree = "<group>"; };
 		4D0A17502894168E00644856 /* SFTintedIconPickerColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTintedIconPickerColors.swift; sourceTree = "<group>"; };
-		4D0A17542894478500644856 /* SFTintedIconPickerLayoutInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTintedIconPickerLayoutInfo.swift; sourceTree = "<group>"; };
 		4D0B07F32894D86B00412B88 /* SFIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFIconPicker.swift; sourceTree = "<group>"; };
 		4D0B07F52894D9B500412B88 /* SFColorPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFColorPickerCell.swift; sourceTree = "<group>"; };
 		4D0B07F72894DA0200412B88 /* SFIconPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFIconPickerCell.swift; sourceTree = "<group>"; };
@@ -83,6 +82,9 @@
 		4DA51F8B28AA327E004594F6 /* SFDemoIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFDemoIconView.swift; sourceTree = "<group>"; };
 		4DA51F8D28AA35AF004594F6 /* SFTintedIconStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFTintedIconStyle.swift; sourceTree = "<group>"; };
 		4DA51F8F28AA3ECB004594F6 /* DebugLogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLogHelper.swift; sourceTree = "<group>"; };
+		4DA51F9128AA4446004594F6 /* SFColorPickerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFColorPickerConfiguration.swift; sourceTree = "<group>"; };
+		4DA51F9328AA4490004594F6 /* SFIconPickerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFIconPickerConfiguration.swift; sourceTree = "<group>"; };
+		4DA51F9528AA4514004594F6 /* SFDemoIconConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFDemoIconConfiguration.swift; sourceTree = "<group>"; };
 		4DA65AFE28A4F8740022ADB5 /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
 		4DA65B0728A4FA0A0022ADB5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SFTintedIconPickerLocalizable.strings"; sourceTree = "<group>"; };
 		4DA65B0B28A4FA880022ADB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SFTintedIconPickerLocalizable.strings; sourceTree = "<group>"; };
@@ -117,10 +119,11 @@
 		4D0A173C2894050E00644856 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				4D0A174E2894161200644856 /* SFTintedIconPickerSize.swift */,
 				4D0A17502894168E00644856 /* SFTintedIconPickerColors.swift */,
-				4D0A17542894478500644856 /* SFTintedIconPickerLayoutInfo.swift */,
 				4D7612002892E70F007891C1 /* SFTintedIconPickerConfiguration.swift */,
+				4DA51F9128AA4446004594F6 /* SFColorPickerConfiguration.swift */,
+				4DA51F9328AA4490004594F6 /* SFIconPickerConfiguration.swift */,
+				4DA51F9528AA4514004594F6 /* SFDemoIconConfiguration.swift */,
 				4D5FE3B728A20D8300F21B6D /* SFTintedIconPickerTitle.swift */,
 			);
 			path = Configuration;
@@ -379,15 +382,16 @@
 				4D0A17422894074F00644856 /* SFTintedIconPickerVC.swift in Sources */,
 				4D572A462892929300265841 /* SFTintedIconPicker.swift in Sources */,
 				4DA65AFF28A4F8740022ADB5 /* LocalizationHelper.swift in Sources */,
+				4DA51F9228AA4446004594F6 /* SFColorPickerConfiguration.swift in Sources */,
+				4DA51F9428AA4490004594F6 /* SFIconPickerConfiguration.swift in Sources */,
 				4D0B07F62894D9B500412B88 /* SFColorPickerCell.swift in Sources */,
 				4D572A162892907700265841 /* SFTintedIconPicker.docc in Sources */,
 				4D572A442892927A00265841 /* SFTintedIcon.swift in Sources */,
-				4D0A174F2894161200644856 /* SFTintedIconPickerSize.swift in Sources */,
 				4D0B07F42894D86B00412B88 /* SFIconPicker.swift in Sources */,
 				4D0B07F82894DA0200412B88 /* SFIconPickerCell.swift in Sources */,
+				4DA51F9628AA4514004594F6 /* SFDemoIconConfiguration.swift in Sources */,
 				4D0A17512894168E00644856 /* SFTintedIconPickerColors.swift in Sources */,
 				4D0B07FA2894DE4D00412B88 /* SFTintedColor.swift in Sources */,
-				4D0A17552894478500644856 /* SFTintedIconPickerLayoutInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

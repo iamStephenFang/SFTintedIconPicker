@@ -16,8 +16,8 @@ class SFIconPicker: UIView {
     fileprivate lazy var collectionView : UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = SFTintedConfig.layoutInfos.iconPickerMinimumLineSpacing
-        layout.minimumInteritemSpacing = SFTintedConfig.layoutInfos.iconPickerMinimumInteritemSpacing
+        layout.minimumLineSpacing = SFTintedConfig.iconPickerConfig.minimumLineSpacing
+        layout.minimumInteritemSpacing = SFTintedConfig.iconPickerConfig.minimumInteritemSpacing
         
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.delegate = self
@@ -73,24 +73,31 @@ class SFIconPicker: UIView {
         super.layoutSubviews()
      
         searchBar.sizeToFit()
-        searchBar.frame = CGRect(x: SFTintedConfig.layoutInfos.searchBarHorizontalPadding, y: SFTintedConfig.layoutInfos.searchBarTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.searchBarHorizontalPadding, height: SFTintedConfig.layoutInfos.searchBarHeight)
+        searchBar.frame = CGRect(x: SFTintedConfig.iconPickerConfig.searchBarHorizontalPadding, y: SFTintedConfig.iconPickerConfig.searchBarTopPadding, width: frame.size.width - 2 * SFTintedConfig.iconPickerConfig.searchBarHorizontalPadding, height: SFTintedConfig.iconPickerConfig.searchBarHeight)
 
-        collectionView.frame = CGRect(x: SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, y: searchBar.frame.maxY + SFTintedConfig.layoutInfos.iconPickerTopPadding, width: frame.size.width - 2 * SFTintedConfig.layoutInfos.iconPickerHorizontalPadding, height: collectionViewHeight())
+        collectionView.frame = CGRect(x: SFTintedConfig.iconPickerConfig.horizontalPadding, y: searchBar.frame.maxY + SFTintedConfig.iconPickerConfig.topPadding, width: frame.size.width - 2 * SFTintedConfig.iconPickerConfig.horizontalPadding, height: collectionViewHeight())
     }
     
     private func collectionViewHeight() -> CGFloat {
-        let columnCount = CGFloat(6)
+        let columnCount = CGFloat(SFTintedConfig.iconPickerConfig.numberOfItemsInRow)
         var symbolCount = CGFloat(SFIconPicker.symbols.count)
         if isSearching {
             symbolCount = CGFloat(filteredSymbols.count)
         }
         let rowCount = CGFloat(ceil(symbolCount / columnCount))
         let separatorCount = max(rowCount - 1, 0)
-        return rowCount * SFTintedConfig.sizes.pickIconSize + separatorCount * SFTintedConfig.layoutInfos.iconPickerMinimumLineSpacing
+        return rowCount * itemSize() + separatorCount * SFTintedConfig.iconPickerConfig.minimumInteritemSpacing
+    }
+    
+    private func itemSize() -> CGFloat {
+        let collectionViewWidth = frame.size.width - SFTintedConfig.iconPickerConfig.horizontalPadding * 2
+        let numbersPerRow = CGFloat(SFTintedConfig.iconPickerConfig.numberOfItemsInRow)
+        let itemsWidth = collectionViewWidth - (numbersPerRow - 1) * SFTintedConfig.iconPickerConfig.minimumLineSpacing
+        return itemsWidth / numbersPerRow
     }
     
     public func height() -> CGFloat {
-        return collectionViewHeight() + SFTintedConfig.layoutInfos.iconPickerBottomPadding + SFTintedConfig.layoutInfos.iconPickerTopPadding + SFTintedConfig.layoutInfos.searchBarTopPadding + SFTintedConfig.layoutInfos.searchBarHeight
+        return collectionViewHeight() + SFTintedConfig.iconPickerConfig.bottomPadding + SFTintedConfig.iconPickerConfig.topPadding + SFTintedConfig.iconPickerConfig.searchBarTopPadding + SFTintedConfig.iconPickerConfig.searchBarHeight
     }
 }
 
@@ -123,7 +130,7 @@ extension SFIconPicker: UICollectionViewDataSource {
 
 extension SFIconPicker: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: SFTintedConfig.sizes.pickIconSize, height: SFTintedConfig.sizes.pickIconSize)
+        return CGSize(width: itemSize(), height: itemSize())
     }
 }
 

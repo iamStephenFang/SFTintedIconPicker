@@ -13,19 +13,17 @@ class SFColorPickerCell: UICollectionViewCell {
     
     private lazy var gradientColorLayer: CAGradientLayer = {
         $0.shouldRasterize = true
-        $0.cornerRadius = SFTintedConfig.sizes.innerColorIconSize / 2.0
         return $0
     } (CAGradientLayer())
     
     private lazy var selectedLayer: CAShapeLayer = {
-        $0.lineWidth = SFTintedConfig.sizes.selectedColorBorderWidth
+        $0.lineWidth = SFTintedConfig.colorPickerConfig.selectedBorderWidth
         $0.strokeColor = SFTintedConfig.colors.colorPickerSelectedCircleColor.cgColor
         $0.fillColor = UIColor.clear.cgColor
         return $0
     } (CAShapeLayer())
     
     private lazy var colorLayer: CAShapeLayer = {
-        $0.cornerRadius = SFTintedConfig.sizes.innerColorIconSize / 2.0
         return $0
     } (CAShapeLayer())
     
@@ -34,16 +32,19 @@ class SFColorPickerCell: UICollectionViewCell {
         
         contentView.layer.addSublayer(selectedLayer)
         selectedLayer.frame = contentView.bounds
-        selectedLayer.path = UIBezierPath(ovalIn: CGRect(x: SFTintedConfig.sizes.selectedColorBorderWidth, y: SFTintedConfig.sizes.selectedColorBorderWidth, width: selectedLayer.frame.size.width - 2 * SFTintedConfig.sizes.selectedColorBorderWidth, height: selectedLayer.frame.size.height - 2 * SFTintedConfig.sizes.selectedColorBorderWidth)).cgPath
+        selectedLayer.path = UIBezierPath(ovalIn: CGRect(x: SFTintedConfig.colorPickerConfig.selectedBorderWidth, y: SFTintedConfig.colorPickerConfig.selectedBorderWidth, width: selectedLayer.frame.size.width - 2 * SFTintedConfig.colorPickerConfig.selectedBorderWidth, height: selectedLayer.frame.size.height - 2 * SFTintedConfig.colorPickerConfig.selectedBorderWidth)).cgPath
         selectedLayer.isHidden = true
         
-        let offset = (SFTintedConfig.sizes.colorIconSize - SFTintedConfig.sizes.innerColorIconSize) / 2.0
+        let innerSize = frame.size.width * SFTintedConfig.colorPickerConfig.innerColorSizeRatio
+        let offset = (frame.size.height - innerSize) / 2.0
         contentView.layer.addSublayer(gradientColorLayer)
-        gradientColorLayer.frame = CGRect(x: offset, y: offset, width: SFTintedConfig.sizes.innerColorIconSize, height: SFTintedConfig.sizes.innerColorIconSize)
+        gradientColorLayer.cornerRadius = innerSize / 2.0
+        gradientColorLayer.frame = CGRect(x: offset, y: offset, width: innerSize, height: innerSize)
         
         contentView.layer.addSublayer(colorLayer)
-        colorLayer.frame = CGRect(x: offset, y: offset, width: SFTintedConfig.sizes.innerColorIconSize, height: SFTintedConfig.sizes.innerColorIconSize)
-        colorLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: SFTintedConfig.sizes.innerColorIconSize, height: SFTintedConfig.sizes.innerColorIconSize), cornerRadius: SFTintedConfig.sizes.innerColorIconSize / 2.0).cgPath
+        colorLayer.frame = CGRect(x: offset, y: offset, width: innerSize, height: innerSize)
+        colorLayer.cornerRadius = innerSize / 2.0
+        colorLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: innerSize, height: innerSize), cornerRadius: innerSize / 2.0).cgPath
     }
     
     required init?(coder: NSCoder) {
