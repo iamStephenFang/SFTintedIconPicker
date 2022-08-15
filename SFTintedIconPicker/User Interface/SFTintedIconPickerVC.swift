@@ -34,7 +34,7 @@ open class SFTintedIconPickerVC: UIViewController {
         
         demoIconView.frame = CGRect(x: SFTintedConfig.demoIconConfig.horizontalMargin, y:  SFTintedConfig.demoIconConfig.topMargin, width: view.bounds.width - 2 * SFTintedConfig.demoIconConfig.horizontalMargin, height: SFTintedConfig.demoIconConfig.verticalPadding * 2 + SFTintedConfig.demoIconConfig.iconSize)
         colorPicker.frame = CGRect(x: SFTintedConfig.colorPickerConfig.horizontalMargin, y: demoIconView.frame.maxY + SFTintedConfig.colorPickerConfig.topMargin, width: view.bounds.width - 2 * SFTintedConfig.colorPickerConfig.horizontalMargin, height: colorPicker.height())
-        iconPicker.frame = CGRect(x: SFTintedConfig.iconPickerConfig.areaHorizontalMargin, y: colorPicker.frame.maxY + SFTintedConfig.iconPickerConfig.areaTopMargin, width: view.bounds.width - 2 * SFTintedConfig.iconPickerConfig.areaHorizontalMargin, height: iconPicker.height())
+        iconPicker.frame = CGRect(x: SFTintedConfig.iconPickerConfig.horizontalMargin, y: colorPicker.frame.maxY + SFTintedConfig.iconPickerConfig.topMargin, width: view.bounds.width - 2 * SFTintedConfig.iconPickerConfig.horizontalMargin, height: iconPicker.height())
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: contentHeight())
     }
     
@@ -62,7 +62,7 @@ open class SFTintedIconPickerVC: UIViewController {
     
     private func setUpSymbolPickerArea() {
         iconPicker.iconPickerDelegate = self
-        iconPicker.layer.cornerRadius = 10.0
+        iconPicker.layer.cornerRadius = SFTintedConfig.iconPickerConfig.cornerRadius
         scrollView.addSubview(iconPicker)
     }
     
@@ -73,7 +73,7 @@ open class SFTintedIconPickerVC: UIViewController {
     private func contentHeight() -> CGFloat {
         let iconAreaHeight = SFTintedConfig.demoIconConfig.verticalPadding * 2 + SFTintedConfig.demoIconConfig.iconSize + SFTintedConfig.demoIconConfig.topMargin
         let colorPickerAreaHeight = SFTintedConfig.colorPickerConfig.topMargin + colorPicker.height()
-        let iconPickerAreaHeight = SFTintedConfig.iconPickerConfig.areaTopMargin + iconPicker.height() + SFTintedConfig.iconPickerConfig.areaBottomMargin
+        let iconPickerAreaHeight = SFTintedConfig.iconPickerConfig.topMargin + iconPicker.height() + SFTintedConfig.iconPickerConfig.bottomMargin
         
         let keyWindow = UIApplication.shared.connectedScenes
                 .filter({$0.activationState == .foregroundActive})

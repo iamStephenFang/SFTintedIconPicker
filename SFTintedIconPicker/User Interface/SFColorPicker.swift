@@ -37,10 +37,10 @@ class SFColorPicker: UIView {
         
         backgroundColor = SFTintedConfig.colors.colorPickerAreaBackgroundColor
         
-        if let selectIndex = SFTintedConfig.colors.providedColors.firstIndex(of: color) {
+        if let selectIndex = SFTintedConfig.providedColors.firstIndex(of: color) {
             collectionView.selectItem(at: IndexPath(item: selectIndex, section: 0), animated: false, scrollPosition: .top)
         } else if #available(iOS 14.0, *), SFTintedConfig.showSystemColorPicker {
-            collectionView.selectItem(at: IndexPath(item: SFTintedConfig.colors.providedColors.count, section: 0), animated: false, scrollPosition: .top)
+            collectionView.selectItem(at: IndexPath(item: SFTintedConfig.providedColors.count, section: 0), animated: false, scrollPosition: .top)
         } else {
             debugInfoForIconPicker("Cannot find color \(color)")
             collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .top)
@@ -81,9 +81,9 @@ extension SFColorPicker: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if #available(iOS 14.0, *), SFTintedConfig.showSystemColorPicker {
-            return SFTintedConfig.colors.providedColors.count + 1
+            return SFTintedConfig.providedColors.count + 1
         } else {
-            return SFTintedConfig.colors.providedColors.count
+            return SFTintedConfig.providedColors.count
         }
     }
     
@@ -91,15 +91,15 @@ extension SFColorPicker: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SFColorPickerCell.identifier, for: indexPath) as! SFColorPickerCell
         
         if #available(iOS 14.0, *), SFTintedConfig.showSystemColorPicker {
-            if indexPath.item != SFTintedConfig.colors.providedColors.count {
-                cell.setupColor(SFTintedConfig.colors.providedColors[indexPath.item])
+            if indexPath.item != SFTintedConfig.providedColors.count {
+                cell.setupColor(SFTintedConfig.providedColors[indexPath.item])
             } else {
                 let rainbowColor : [UIColor] = [.red, .orange, .yellow, .green, .cyan, .blue, .purple]
                 let tintColor = SFTintedColor(backgroundGradientColors: rainbowColor)
                 cell.setupColor(tintColor)
             }
         } else {
-            cell.setupColor(SFTintedConfig.colors.providedColors[indexPath.item])
+            cell.setupColor(SFTintedConfig.providedColors[indexPath.item])
         }
         
         return cell
@@ -110,13 +110,13 @@ extension SFColorPicker: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if #available(iOS 14.0, *), SFTintedConfig.showSystemColorPicker {
-            if indexPath.item == SFTintedConfig.colors.providedColors.count {
+            if indexPath.item == SFTintedConfig.providedColors.count {
                 colorPickerDelegate?.didSelectColorPicker()
             } else {
-                colorPickerDelegate?.didSelectColor(SFTintedConfig.colors.providedColors[indexPath.item])
+                colorPickerDelegate?.didSelectColor(SFTintedConfig.providedColors[indexPath.item])
             }
         } else {
-            colorPickerDelegate?.didSelectColor(SFTintedConfig.colors.providedColors[indexPath.item])
+            colorPickerDelegate?.didSelectColor(SFTintedConfig.providedColors[indexPath.item])
         }
     }
 }

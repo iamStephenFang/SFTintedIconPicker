@@ -34,15 +34,6 @@ public struct SFTintedIconPickerColors {
     // MARK: - Color Picker
     
     /// Use this property to modify the default colors provided.
-    public var providedColors : [SFTintedColor] = [SFTintedColor(backgroundColor: .red),
-                                                   SFTintedColor(backgroundColor: .orange),
-                                                   SFTintedColor(backgroundColor: .yellow),
-                                                   SFTintedColor(backgroundColor: .green),
-                                                   SFTintedColor(backgroundColor: .cyan),
-                                                   SFTintedColor(backgroundColor: .blue),
-                                                   SFTintedColor(backgroundColor: .purple)]
-    
-    /// Use this property to modify the default colors provided.
     public var colorPickerAreaBackgroundColor = UIColor.systemBackground
     
     /// Use this property to modify the default colors provided.
@@ -66,11 +57,5 @@ public struct SFTintedIconPickerColors {
     
     /// Use this property to modify the default colors provided.
     public var iconPickerAreaBackgroundColor = UIColor.systemBackground
-    
-    /// Use this property to modify the default colors provided.
-    public var iconPickerSectionHeaderBackgroundColor = UIColor.clear
-    
-    /// Use this property to modify the default colors provided.
-    public var iconPickerSectionHeaderTitleColor = UIColor.label
     
 }

@@ -17,8 +17,8 @@ class SFIconPicker: UIView {
     fileprivate lazy var collectionView : UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = SFTintedConfig.iconPickerConfig.minimumLineSpacing
-        layout.minimumInteritemSpacing = SFTintedConfig.iconPickerConfig.minimumInteritemSpacing
+        layout.minimumLineSpacing = SFTintedConfig.iconPickerConfig.lineSpacing
+        layout.minimumInteritemSpacing = SFTintedConfig.iconPickerConfig.interitemSpacing
         
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.delegate = self
@@ -92,7 +92,7 @@ class SFIconPicker: UIView {
     private func itemSize() -> CGFloat {
         let collectionViewWidth = frame.size.width - SFTintedConfig.iconPickerConfig.horizontalPadding * 2
         let numbersPerRow = CGFloat(SFTintedConfig.iconPickerConfig.numberOfItemsInRow)
-        let itemsWidth = collectionViewWidth - (numbersPerRow - 1) * SFTintedConfig.iconPickerConfig.minimumLineSpacing
+        let itemsWidth = collectionViewWidth - (numbersPerRow - 1) * SFTintedConfig.iconPickerConfig.lineSpacing
         return floor(itemsWidth / numbersPerRow)
     }
 }
@@ -138,6 +138,6 @@ extension SFIconPicker: UISearchBarDelegate {
             filteredSymbols = SFIconPicker.symbols.filter({$0.contains(searchText.lowercased())})
         }
         collectionView.reloadData()
-        iconPickerDelegate?.didSearchSymbol(searchText)
+        iconPickerDelegate?.didSearchKeyword(searchText)
     }
 }

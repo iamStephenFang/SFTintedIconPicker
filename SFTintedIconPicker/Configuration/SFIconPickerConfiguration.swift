@@ -9,6 +9,18 @@ import Foundation
 
 public struct SFIconPickerConfiguration {
     
+    /// The size which is used for icon
+    public var topMargin = CGFloat(16)
+    
+    /// The size which is used for icon
+    public var bottomMargin = CGFloat(16)
+    
+    /// The size which is used for icon
+    public var horizontalMargin = CGFloat(16)
+    
+    /// The corner radius of icon picker.  Defaults to 10.
+    public var cornerRadius = CGFloat(10)
+    
     // MARK: - Search Bar
     
     /// The size which is used for icon
@@ -23,15 +35,6 @@ public struct SFIconPickerConfiguration {
     // MARK: - Icon Picker
     
     /// The size which is used for icon
-    public var areaTopMargin = CGFloat(16)
-    
-    /// The size which is used for icon
-    public var areaBottomMargin = CGFloat(16)
-    
-    /// The size which is used for icon
-    public var areaHorizontalMargin = CGFloat(16)
-    
-    /// The size which is used for icon
     public var topPadding = CGFloat(20)
     
     /// The size which is used for icon
@@ -41,11 +44,12 @@ public struct SFIconPickerConfiguration {
     public var horizontalPadding = CGFloat(14)
     
     /// The size which is used for icon
-    public var minimumLineSpacing = CGFloat(22)
+    public var lineSpacing = CGFloat(22)
     
     /// The size which is used for icon
-    public var minimumInteritemSpacing = CGFloat(15)
+    public var interitemSpacing = CGFloat(15)
     
     /// The number of items per row in icon picker.  Defaults to 6.
     public var numberOfItemsInRow: Int = 6
+    
 }
