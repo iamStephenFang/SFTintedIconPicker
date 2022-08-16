@@ -18,7 +18,7 @@ class SFColorPickerCell: UICollectionViewCell {
     
     private lazy var selectedLayer: CAShapeLayer = {
         $0.lineWidth = SFTintedConfig.colorPickerConfig.selectedBorderWidth
-        $0.strokeColor = SFTintedConfig.colors.colorPickerSelectedCircleColor.cgColor
+        $0.strokeColor = SFTintedConfig.colors.colorPickerSelectedBorderColor.cgColor
         $0.fillColor = UIColor.clear.cgColor
         return $0
     } (CAShapeLayer())

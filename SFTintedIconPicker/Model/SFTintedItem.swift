@@ -9,15 +9,20 @@ import UIKit
 
 public class SFTintedItem {
     
-    /// Use this property to modify the default colors provided.
+    /// The SFTintedColor item provided
     public var itemColor = SFTintedColor(backgroundColor: UIColor.red)
     
-    /// SFSymbols icon name
+    /// The SF Symbols name provided
     public var itemSymbol = "square.and.arrow.up"
     
+    // MARK: - Initializer
+    
+    /// Provide the struct to identify the SFTintedItem
+    /// - Parameters:
+    ///   - itemColor: The SFTintedColor item provided
+    ///   - itemSymbol: The SF Symbols name provided
     public init(itemColor: SFTintedColor = SFTintedColor(backgroundColor: UIColor.red), itemSymbol: String = "square.and.arrow.up") {
         self.itemColor = itemColor
         self.itemSymbol = itemSymbol
     }
-    
 }

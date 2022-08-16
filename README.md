@@ -63,18 +63,16 @@ config.colors.pickerTintColor = UIColor.systemBlue
 config.colors.pickerBackgroundColor = UIColor.systemGroupedBackground
 config.colors.pickerTitleColor = UIColor.label
 
-config.colors.iconTintedColor = UIColor.gray
-config.colors.iconBackgroundColor = UIColor.secondarySystemBackground
 config.colors.iconAreaBackgroundColor = UIColor.systemBackground
 
 config.colors.colorPickerAreaBackgroundColor = UIColor.systemBackground
-config.colors.colorPickerSelectedCircleColor = UIColor.systemFill
+config.colors.colorPickerSelectedBorderColor = UIColor.systemFill
 
 config.colors.searchBarBackgroundColor = UIColor.clear
 config.colors.searchBarPlaceholderTextColor = UIColor.placeholderText
 
-config.colors.iconPickerSelectedTintedColor = UIColor.secondarySystemBackground
-config.colors.iconPickerSelectedBackgroundColor = UIColor.systemFill
+config.colors.iconPickerCellTintedColor = UIColor.gray
+config.colors.iconPickerCellSelectedBackgroundColor = UIColor.systemFill
 config.colors.iconPickerAreaBackgroundColor = UIColor.systemBackground
 ```
 
@@ -90,7 +88,7 @@ config.titles.searchBarPlaceHolder = localizedStringInSFTintedIconPicker("SFTint
 
 ### Provided Colors
 
-Both monochrome and gradient colours are supported.
+Both solid color and gradient colours are supported.
 
 ```swift
 config.demoIconConfig = [SFTintedColor(backgroundColor: .red),
@@ -135,6 +133,7 @@ config.iconPickerConfig.horizontalPadding = CGFloat(14)
 config.iconPickerConfig.lineSpacing = CGFloat(22)
 config.iconPickerConfig.interitemSpacing = CGFloat(15)
 config.iconPickerConfig.numberOfItemsInRow = Int(6)
+config.iconPickerConfig.cellCornerRadius = CGFloat(7)
 ```
 
 ## Usage

@@ -11,51 +11,45 @@ public struct SFTintedIconPickerColors {
     
     // MARK: - Picker Style
     
-    /// The common tint color which is used for done buttons in navigation bar
+    /// The tint color used for done buttons in navigation bar
     public var pickerTintColor = UIColor.systemBlue
     
-    /// The background color to use for picker.
+    /// The background color of picker.
     public var pickerBackgroundColor = UIColor.systemGroupedBackground
     
-    /// The text color to use for picker' s title.
+    /// The text color of picker's title.
     public var pickerTitleColor = UIColor.label
   
     // MARK: - Icon
     
-    /// The foreground  color to use for icon.
-    public var iconTintedColor: UIColor = UIColor.gray
-    
-    /// The background color to use for icon.
-    public var iconBackgroundColor: UIColor = UIColor.secondarySystemBackground
-    
-    /// The background color to use for selected icon..
+    /// The background color of top icon area.
     public var iconAreaBackgroundColor = UIColor.systemBackground
     
     // MARK: - Color Picker
     
-    /// Use this property to modify the default colors provided.
+    /// The background color of color picker area.
     public var colorPickerAreaBackgroundColor = UIColor.systemBackground
     
-    /// Use this property to modify the default colors provided.
-    public var colorPickerSelectedCircleColor = UIColor.systemFill
+    /// The background color of color picker cell's border when selected.
+    public var colorPickerSelectedBorderColor = UIColor.systemFill
     
     // MARK: - Search Bar
     
     /// The background color to use for search bar.
     public var searchBarBackgroundColor = UIColor.clear
     
-    /// The text color to use for search bar' s placeholder.
+    /// The text color to use for search bar's placeholder.
     public var searchBarPlaceholderTextColor = UIColor.placeholderText
     
     // MARK: - Icon Picker
     
-    /// The background color to use for selected icon..
-    public var iconPickerSelectedTintedColor = UIColor.secondarySystemBackground
+    /// The tinted color to use for symbol in icon picker cell.
+    public var iconPickerCellTintedColor: UIColor = UIColor.gray
     
-    /// The background color to use for selected icon..
-    public var iconPickerSelectedBackgroundColor = UIColor.systemFill
+    /// The background color to use for icon picker's cell when selected.
+    public var iconPickerCellSelectedBackgroundColor = UIColor.systemFill
     
-    /// Use this property to modify the default colors provided.
+    /// The background color of icon picker area.
     public var iconPickerAreaBackgroundColor = UIColor.systemBackground
     
 }

@@ -9,23 +9,23 @@ import UIKit
 
 public struct SFTintedColor: Equatable {
     
-    /// Use this property to modify the default colors provided.
+    /// The gradient colors provided for the item's background.
     public var backgroundGradientColors: [UIColor] = []
     
-    /// Use this property to modify the default colors provided.
+    /// The solid color provided for the item's background.
     public var backgroundColor = UIColor.red
     
+    // MARK: - Initializer
     
-    /// <#Description#>
-    /// - Parameter backgroundColor: <#backgroundColor description#>
+    /// Provide solid color to color the background
+    /// - Parameter backgroundColor: The solid color provided for the item's background.
     public init(backgroundColor: UIColor) {
         self.backgroundColor = backgroundColor
         self.backgroundGradientColors = []
     }
 
-
-    /// <#Description#>
-    /// - Parameter backgroundGradientColors: <#backgroundGradientColors description#>
+    /// Provide solid color to color the background
+    /// - Parameter backgroundGradientColors: The gradient colors provided for the item's background.
     public init(backgroundGradientColors: [UIColor]) {
         self.backgroundGradientColors = backgroundGradientColors
     }

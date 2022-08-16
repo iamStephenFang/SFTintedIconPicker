@@ -21,6 +21,7 @@ enum LayoutInfo {
 class ViewController: UIViewController {
     
     var currentItem = SFTintedItem()
+    
     var iconConfig = UIImage.SymbolConfiguration(pointSize: CGFloat(33))
     
     var iconView = SFTintedIcon(item: SFTintedItem(), style: SFTintedIconStyle(iconSize: CGFloat(61), symbolSize: CGFloat(31)))
@@ -32,12 +33,13 @@ class ViewController: UIViewController {
         $0.addTarget(self, action: #selector(showIconPicker), for: .touchUpInside)
         return $0
     } (UIButton(type: .custom))
+    
     lazy var imageView: UIImageView = {
         $0.backgroundColor = UIColor.red
-        
         $0.contentMode = .center
+        $0.image = UIImage(systemName: "square.and.arrow.up", withConfiguration: iconConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         return $0
-    }(UIImageView())
+    } (UIImageView())
     
     override func viewDidLoad() {
         super.viewDidLoad()

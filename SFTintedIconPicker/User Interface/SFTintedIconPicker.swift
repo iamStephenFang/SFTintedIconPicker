@@ -64,16 +64,13 @@ open class SFTintedIconPicker: UINavigationController {
             self?.didSelect(item: item)
         }
         
-        if #available(iOS 15.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithDefaultBackground()
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-            UINavigationBar.appearance().compactAppearance = appearance
-        } else {
-            navigationBar.isTranslucent = false
-        }
-
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [.foregroundColor: SFTintedConfig.colors.pickerTitleColor]
+        appearance.configureWithDefaultBackground()
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        
         navigationBar.tintColor = SFTintedConfig.colors.pickerTintColor
     }
     

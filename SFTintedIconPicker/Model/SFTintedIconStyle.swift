@@ -9,29 +9,27 @@ import UIKit
 
 public struct SFTintedIconStyle {
     
-    /// The size which is used for icon
+    /// The width and height of icon.  Defaults to 61.
     public var iconSize = CGFloat(61)
     
-    /// Use this property to modify the default colors provided.
+    /// The point size of symbol.  Defaults to 33.
     public var symbolSize = CGFloat(33)
     
-    /// The corner Radius which is used for demo icon
+    /// The corner radius which is used for icon.  Defaults to 15.
     public var cornerRadius = CGFloat(15.0)
     
-    /// Use this property to modify the default colors provided.
+    /// The tint color of symbol.
     public var tintColor = UIColor.white
     
-    // MARK: - Use SymbolConfiguration instead
-    
-    /// The size which is used for symbol
+    /// Use SymbolConfiguration for symbol customization or not
     public var useSymbolConfiguration: Bool = false
     
-    /// The size which is used for symbol
+    /// Custom symbol configuration
     public var symbolConfiguration = UIImage.SymbolConfiguration(pointSize:CGFloat(33))
 
     // MARK: - Initializer
     
-    /// Build a SFTintedIconStyle struct using the recommended method
+    /// Provide a SFTintedIconStyle struct using the recommended method
     /// - Parameters:
     ///   - iconSize: The size of icon
     ///   - symbolSize: The point size of symbol
@@ -46,7 +44,7 @@ public struct SFTintedIconStyle {
     }
 
 
-    /// Build a SFTintedIconStyle struct using the custom symbolConfiguration method
+    /// Provide a SFTintedIconStyle struct using the custom symbolConfiguration method
     /// - Parameters:
     ///   - iconSize: The size of icon
     ///   - cornerRadius: The corner radius of icon
