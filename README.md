@@ -188,7 +188,6 @@ present(picker, animated: true, completion: nil)
 
 ## Roadmap
 
-- Swift Package Manager
 - SF Symbols Categories
 - SF Symbols Localization
 - Objective-C Support
