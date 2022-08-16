@@ -25,7 +25,7 @@ pod 'SFTintedIconPicker'
 use_frameworks!
 ```
 
-<!-- #### Using [Swift Package Manager](https://swift.org/package-manager/)
+#### Using [Swift Package Manager](https://swift.org/package-manager/)
 
 Open SPM dependency manager through `File > Swift Pakcages > Add Package Dependency...`.
 
@@ -41,7 +41,7 @@ name: "SFTintedIconPicker",
 url: "https://github.com/iamStephenFang/SFTintedIconPicker.git",
 .upToNextMajor(from: "1.0.0")
 )
-``` -->
+```
 
 Note: This has a minimum target iOS version of `13.0`.
 
