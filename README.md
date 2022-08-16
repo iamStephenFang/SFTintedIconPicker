@@ -2,6 +2,8 @@
 
 SFTintedIconPicker is a Shortcuts-like and highly customizable SFSymbol picker written in Swift.
 
+<img src="http://image.stephenfang.me/SFTintedIconPickerDemo.png" width="30%">
+
 ## Features
 
 - Native Appearance

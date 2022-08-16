@@ -9,24 +9,24 @@ import UIKit
 
 public class SFTintedIcon: UIImageView {
     
-    public var iconConfig = UIImage.SymbolConfiguration(pointSize: CGFloat(33))
+    private var iconConfig = UIImage.SymbolConfiguration(pointSize: CGFloat(33))
+    private var style = SFTintedIconStyle(iconSize: CGFloat(61), symbolSize: CGFloat(31))
     
     private lazy var gradientLayer: CAGradientLayer = {
-        let layer = CAGradientLayer()
-        layer.shouldRasterize = true
-        return layer
-    }()
-    
-    public convenience init() {
-        self.init(item: SFTintedItem(), style: SFTintedIconStyle())
-    }
+        $0.shouldRasterize = true
+        return $0
+    }(CAGradientLayer())
     
     public required init(item: SFTintedItem, style: SFTintedIconStyle) {
         super.init(frame: CGRect(x: 0, y: 0, width: style.iconSize, height: style.iconSize))
         
+        self.style = style
         if style.useSymbolConfiguration {
             iconConfig = style.symbolConfiguration
         }
+        
+        layer.addSublayer(gradientLayer)
+        gradientLayer.isHidden = true
         
         layer.cornerRadius = style.cornerRadius
         contentMode = .center
@@ -39,14 +39,13 @@ public class SFTintedIcon: UIImageView {
     }
     
     public func refreshWithItem(_ item: SFTintedItem) {
-        image = UIImage(systemName: item.itemSymbol, withConfiguration: iconConfig)?.withTintColor(item.itemColor.tintColor, renderingMode: .alwaysOriginal)
+        image = UIImage(systemName: item.itemSymbol, withConfiguration: iconConfig)?.withTintColor(style.tintColor, renderingMode: .alwaysOriginal)
         
         if item.itemColor.backgroundGradientColors.count > 0 {
-            if gradientLayer.sublayers == nil {
-                layer.addSublayer(gradientLayer)
-            }
+            gradientLayer.isHidden = false
             gradientLayer.colors = item.itemColor.backgroundGradientColors.map{ $0.cgColor }
         } else {
+            gradientLayer.isHidden = true
             backgroundColor = item.itemColor.backgroundColor
         }
     }

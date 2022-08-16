@@ -9,7 +9,7 @@ import UIKit
 
 class SFDemoIconView: UIView {
     
-    fileprivate let iconView = SFTintedIcon()
+    fileprivate let iconView = SFTintedIcon(item: SFTintedItem(), style: SFTintedIconStyle(iconSize: CGFloat(61), symbolSize: CGFloat(31)))
     
     required init(item: SFTintedItem) {
         super.init(frame: CGRect.zero)

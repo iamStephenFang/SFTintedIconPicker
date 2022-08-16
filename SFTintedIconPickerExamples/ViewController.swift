@@ -21,19 +21,20 @@ enum LayoutInfo {
 class ViewController: UIViewController {
     
     var currentItem = SFTintedItem()
+    var iconConfig = UIImage.SymbolConfiguration(pointSize: CGFloat(33))
     
-    fileprivate var iconView = SFTintedIcon()
+    var iconView = SFTintedIcon(item: SFTintedItem(), style: SFTintedIconStyle(iconSize: CGFloat(61), symbolSize: CGFloat(31)))
     
-    fileprivate lazy var actionButton: UIButton = {
+    lazy var actionButton: UIButton = {
         $0.setTitle("Customize", for: .normal)
         $0.backgroundColor = .systemBlue
         $0.layer.cornerRadius = 10.0
         $0.addTarget(self, action: #selector(showIconPicker), for: .touchUpInside)
         return $0
     } (UIButton(type: .custom))
-    
-    private lazy var imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         $0.backgroundColor = UIColor.red
+        
         $0.contentMode = .center
         return $0
     }(UIImageView())
@@ -68,7 +69,7 @@ class ViewController: UIViewController {
                 
                 self.iconView.refreshWithItem(item)
                 self.imageView.backgroundColor = item.itemColor.backgroundColor
-                self.imageView.image = UIImage(systemName: item.itemSymbol, withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))
+                self.imageView.image = UIImage(systemName: item.itemSymbol, withConfiguration: iconConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
                 picker.dismiss(animated: true, completion: nil)
             }
         }
