@@ -21,10 +21,9 @@ enum LayoutInfo {
 class ViewController: UIViewController {
     
     var currentItem = SFTintedItem()
+    let iconConfig = UIImage.SymbolConfiguration(pointSize: CGFloat(33))
     
-    var iconConfig = UIImage.SymbolConfiguration(pointSize: CGFloat(33))
-    
-    var iconView = SFTintedIcon(item: SFTintedItem(), style: SFTintedIconStyle(iconSize: CGFloat(61), symbolSize: CGFloat(31)))
+    let iconView = SFTintedIcon(item: SFTintedItem(), style: SFTintedIconStyle(iconSize: CGFloat(61), symbolSize: CGFloat(31)))
     
     lazy var actionButton: UIButton = {
         $0.setTitle("Customize", for: .normal)
@@ -59,6 +58,7 @@ class ViewController: UIViewController {
     @objc private func showIconPicker() {
         var config = SFTintedIconPickerConfiguration()
         config.selectedItem = currentItem
+//        config.isColorSelectionEnabled = false
         let picker = SFTintedIconPicker(configuration:config)
         picker.didFinishPicking { [self, unowned picker] item, cancelled in
             if cancelled {
@@ -70,6 +70,7 @@ class ViewController: UIViewController {
                 self.currentItem = item
                 
                 self.iconView.refreshWithItem(item)
+                
                 self.imageView.backgroundColor = item.itemColor.backgroundColor
                 self.imageView.image = UIImage(systemName: item.itemSymbol, withConfiguration: iconConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal)
                 picker.dismiss(animated: true, completion: nil)

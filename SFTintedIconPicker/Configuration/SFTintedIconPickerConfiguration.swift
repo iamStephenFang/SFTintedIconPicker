@@ -18,6 +18,9 @@ public struct SFTintedIconPickerConfiguration {
     /// Show native color picker if needed. (iOS 14 +)
     public var showSystemColorPicker = true
     
+    /// Show color selection area
+    public var isColorSelectionEnabled: Bool = true
+    
     /// If don't want to have logs from picker, set it to false.
     public var isDebugLogsEnabled: Bool = true
     

@@ -25,7 +25,11 @@ open class SFTintedIconPickerVC: UIViewController {
         setUpNavigation()
         setUpScrollView()
         setUpIconArea()
-        setUpColorPickerArea()
+        
+        if SFTintedConfig.isColorSelectionEnabled {
+            setUpColorPickerArea()
+        }
+        
         setUpSymbolPickerArea()
     }
     
@@ -33,8 +37,14 @@ open class SFTintedIconPickerVC: UIViewController {
         super.viewDidLayoutSubviews()
         
         demoIconView.frame = CGRect(x: SFTintedConfig.demoIconConfig.horizontalMargin, y:  SFTintedConfig.demoIconConfig.topMargin, width: view.bounds.width - 2 * SFTintedConfig.demoIconConfig.horizontalMargin, height: SFTintedConfig.demoIconConfig.verticalPadding * 2 + SFTintedConfig.demoIconConfig.iconSize)
-        colorPicker.frame = CGRect(x: SFTintedConfig.colorPickerConfig.horizontalMargin, y: demoIconView.frame.maxY + SFTintedConfig.colorPickerConfig.topMargin, width: view.bounds.width - 2 * SFTintedConfig.colorPickerConfig.horizontalMargin, height: colorPicker.height())
-        iconPicker.frame = CGRect(x: SFTintedConfig.iconPickerConfig.horizontalMargin, y: colorPicker.frame.maxY + SFTintedConfig.iconPickerConfig.topMargin, width: view.bounds.width - 2 * SFTintedConfig.iconPickerConfig.horizontalMargin, height: iconPicker.height())
+        
+        var iconPickerOriginY = demoIconView.frame.maxY + SFTintedConfig.iconPickerConfig.topMargin
+        if SFTintedConfig.isColorSelectionEnabled {
+            colorPicker.frame = CGRect(x: SFTintedConfig.colorPickerConfig.horizontalMargin, y: demoIconView.frame.maxY + SFTintedConfig.colorPickerConfig.topMargin, width: view.bounds.width - 2 * SFTintedConfig.colorPickerConfig.horizontalMargin, height: colorPicker.height())
+            iconPickerOriginY = colorPicker.frame.maxY + SFTintedConfig.iconPickerConfig.topMargin
+        }
+        iconPicker.frame = CGRect(x: SFTintedConfig.iconPickerConfig.horizontalMargin, y: iconPickerOriginY, width: view.bounds.width - 2 * SFTintedConfig.iconPickerConfig.horizontalMargin, height: iconPicker.height())
+        
         scrollView.contentSize = CGSize(width: view.bounds.size.width, height: contentHeight())
     }
     
@@ -72,7 +82,7 @@ open class SFTintedIconPickerVC: UIViewController {
     
     private func contentHeight() -> CGFloat {
         let iconAreaHeight = SFTintedConfig.demoIconConfig.verticalPadding * 2 + SFTintedConfig.demoIconConfig.iconSize + SFTintedConfig.demoIconConfig.topMargin
-        let colorPickerAreaHeight = SFTintedConfig.colorPickerConfig.topMargin + colorPicker.height()
+        let colorPickerAreaHeight = SFTintedConfig.isColorSelectionEnabled ? SFTintedConfig.colorPickerConfig.topMargin + colorPicker.height() : CGFloat(0)
         let iconPickerAreaHeight = SFTintedConfig.iconPickerConfig.topMargin + iconPicker.height() + SFTintedConfig.iconPickerConfig.bottomMargin
         
         let keyWindow = UIApplication.shared.connectedScenes
