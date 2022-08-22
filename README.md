@@ -51,7 +51,9 @@ All the configuration endpoints are in the `SFTintedIconPickerConfiguration` str
 
 ```swift
 var config = SFTintedIconPickerConfiguration()
-// [Edit configuration here ...]
+// config.showSystemColorPicker = true
+// config.isDebugLogsEnabled = true
+// config.isColorSelectionEnabled = true
 // Build a picker with your configuration
 let picker = SFTintedIconPicker(configuration: config)
 ```
