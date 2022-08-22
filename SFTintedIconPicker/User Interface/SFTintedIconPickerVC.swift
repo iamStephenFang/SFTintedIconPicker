@@ -51,6 +51,8 @@ open class SFTintedIconPickerVC: UIViewController {
     private func setUpNavigation() {
         navigationItem.title = SFTintedConfig.titles.navigationTitle
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: SFTintedConfig.titles.navigationFinishTitle, style: .done, target: self, action: #selector(done))
+        
+        navigationController?.presentationController?.delegate = self
     }
     
     private func setUpScrollView() {
@@ -131,5 +133,12 @@ extension SFTintedIconPickerVC: UIColorPickerViewControllerDelegate {
     public func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
         SFTintedConfig.selectedItem.itemColor = SFTintedColor(backgroundColor: viewController.selectedColor)
         demoIconView.refreshWithItem(SFTintedConfig.selectedItem)
+    }
+}
+
+extension SFTintedIconPickerVC: UIAdaptivePresentationControllerDelegate {
+    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        // UIViewController interactive dismissal won't do anything
+        didClose?()
     }
 }
